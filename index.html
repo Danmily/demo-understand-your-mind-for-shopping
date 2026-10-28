@@ -65,82 +65,164 @@ body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.6 -app
 .trail .ti:hover { background: var(--bg); } .trail .ti.sel { background: var(--brand-soft); }
 .trail .n { color: var(--faint); font-size: 12px; }
 
-/* 手机：模拟的购物 App（通用样式，不对应任何具体平台） */
-.phone { width: 340px; max-width: 100%; margin: 0 auto; border: 10px solid var(--frame); border-radius: 38px; background: #fff; overflow: hidden; box-shadow: 0 8px 30px var(--shadow); }
-.screen { position: relative; height: 640px; overflow: hidden; background: #f4f4f4; color: #1f2329; font-size: 13px; }
-.sbar { height: 26px; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; font-size: 12px; font-weight: 600; background: #fff; }
-.sbar.dark { background: transparent; color: #fff; position: absolute; top: 0; left: 0; right: 0; z-index: 3; }
-.nav { height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 12px; background: #fff; border-bottom: 1px solid #eee; font-weight: 600; }
-.nav .bk { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 18px; color: #333; }
-.nav .ttl { flex: 1; text-align: center; margin-right: 34px; }
-.body { position: absolute; top: 66px; bottom: 54px; left: 0; right: 0; overflow: hidden; }
-.body.nobar { bottom: 0; }
-.bline { height: 9px; border-radius: 5px; background: #e6e7ea; margin: 6px 0; }
-.bline.w60 { width: 60%; } .bline.w80 { width: 80%; } .bline.w40 { width: 40%; }
-.card2 { background: #fff; margin: 8px; border-radius: 10px; padding: 10px; }
-.ptile { width: 64px; height: 64px; border-radius: 8px; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 20px; flex: none; }
-.prow { display: flex; gap: 10px; align-items: center; }
+/* ===== 手机：示意购物 App（通用样式，不对应任何具体平台；商品、价格、评价均为示意） ===== */
+.phone { width: 350px; max-width: 100%; margin: 0 auto; border: 10px solid var(--frame); border-radius: 40px; background: #fff; overflow: hidden; box-shadow: 0 8px 30px var(--shadow); }
+.screen { position: relative; height: 680px; overflow: hidden; background: #f5f5f5; color: #1f2329; font-size: 12px; line-height: 1.45; }
+.screen * { -webkit-tap-highlight-color: transparent; }
+.sbar { height: 26px; display: flex; justify-content: space-between; align-items: center; padding: 0 18px; font-size: 12px; font-weight: 600; background: #fff; position: relative; z-index: 3; }
+.sbar.dark { background: transparent; color: #fff; position: absolute; top: 0; left: 0; right: 0; }
+.nav { height: 42px; display: flex; align-items: center; gap: 8px; padding: 0 10px; background: #fff; border-bottom: 1px solid #eee; font-weight: 600; font-size: 15px; position: relative; z-index: 3; }
+.nav .bk { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 22px; color: #333; font-weight: 400; }
+.nav .ttl { flex: 1; text-align: center; }
+.nav .ic2 { width: 30px; text-align: center; color: #666; font-weight: 400; }
+.scroll { position: absolute; left: 0; right: 0; overflow-y: auto; scrollbar-width: none; }
+.scroll::-webkit-scrollbar { display: none; }
+.t26 { top: 26px; } .t68 { top: 68px; } .b0 { bottom: 0; } .b52 { bottom: 52px; } .b56 { bottom: 56px; }
+.blk { background: #fff; margin: 8px; border-radius: 12px; padding: 10px 12px; }
+.row2 { display: flex; align-items: center; gap: 8px; padding: 9px 0; border-bottom: 1px solid #f2f2f2; }
+.row2:last-child { border-bottom: 0; }
+.row2 .k { color: #8f959e; width: 36px; flex: none; } .row2 .v { flex: 1; min-width: 0; } .row2 .ar { color: #b0b3b8; }
 .price { color: #fe2c55; font-weight: 700; }
-.price .pm { font-size: 11px; color: #b0b3b8; font-weight: 400; margin-left: 4px; }
-.hero { height: 300px; display: grid; place-items: center; color: #fff; font-size: 64px; font-weight: 800; position: relative; }
-.hero .idx { position: absolute; right: 10px; bottom: 10px; background: rgba(0,0,0,.35); color: #fff; font-size: 11px; border-radius: 10px; padding: 0 8px; font-weight: 400; }
-.hero .dots { position: absolute; left: 0; right: 0; bottom: 12px; display: flex; justify-content: center; gap: 4px; }
-.hero .dots i { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.5); } .hero .dots i.on { width: 14px; background: #fff; }
-.row2 { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: #fff; border-bottom: 1px solid #f0f0f0; }
-.row2 .k { color: #8f959e; width: 44px; flex: none; } .row2 .v { flex: 1; }
-.bbar { position: absolute; left: 0; right: 0; bottom: 0; height: 54px; background: #fff; border-top: 1px solid #eee; display: flex; align-items: center; gap: 8px; padding: 0 10px; }
-.bbar .ic { font-size: 10px; color: #646a73; text-align: center; width: 34px; line-height: 1.3; }
-.bbar .ic b { display: block; width: 18px; height: 18px; margin: 0 auto 2px; border-radius: 5px; border: 1.5px solid #8f959e; }
-.pill { flex: 1; height: 38px; border-radius: 19px; display: grid; place-items: center; color: #fff; font-weight: 600; }
+.price small { font-size: 11px; } .price.lg { font-size: 22px; }
+.del { color: #b0b3b8; text-decoration: line-through; font-size: 11px; margin-left: 4px; font-weight: 400; }
+.tg { display: inline-block; font-size: 10px; border-radius: 3px; padding: 0 4px; margin-right: 3px; line-height: 16px; border: 1px solid #ffc2cd; color: #fe2c55; }
+.tg.g { border-color: #e4e6eb; color: #646a73; } .tg.f { background: #fe2c55; color: #fff; border-color: #fe2c55; }
+.sold { color: #8f959e; font-size: 11px; }
+.art { display: block; width: 100%; height: 100%; }
+.thumb { width: 72px; height: 72px; border-radius: 8px; overflow: hidden; flex: none; }
+.thumb.s { width: 44px; height: 44px; border-radius: 6px; }
+.prow { display: flex; gap: 10px; align-items: center; }
+.two2 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.ell { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.avt { width: 26px; height: 26px; border-radius: 50%; flex: none; }
+.btn2 { display: inline-block; border: 1px solid #ddd; border-radius: 14px; padding: 2px 12px; font-size: 12px; background: #fff; }
+.btn2.red { border-color: #fe2c55; color: #fe2c55; }
+/* 首页 */
+.search { margin: 6px 10px; height: 34px; border-radius: 17px; background: #fff; border: 1.5px solid #fe2c55; display: flex; align-items: center; padding: 0 4px 0 12px; gap: 6px; color: #999; }
+.search b { margin-left: auto; background: #fe2c55; color: #fff; border-radius: 14px; padding: 3px 14px; font-weight: 500; }
+.ctabs { display: flex; gap: 16px; padding: 4px 12px 8px; font-size: 14px; color: #646a73; white-space: nowrap; overflow: hidden; }
+.ctabs .on { color: #1f2329; font-weight: 700; position: relative; } .ctabs .on::after { content: ""; position: absolute; left: 25%; right: 25%; bottom: -4px; height: 3px; border-radius: 2px; background: #fe2c55; }
+.banner { margin: 0 10px; height: 104px; border-radius: 12px; background: linear-gradient(120deg, #ff5a6e, #ff9a5a); color: #fff; padding: 14px 16px; position: relative; overflow: hidden; }
+.banner h4 { margin: 0; font-size: 20px; } .banner p { margin: 4px 0 0; opacity: .9; }
+.banner .bn { position: absolute; right: -6px; bottom: -10px; width: 110px; height: 110px; opacity: .95; }
+.banner .dots2 { position: absolute; left: 16px; bottom: 8px; display: flex; gap: 4px; } .banner .dots2 i { width: 5px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.5); } .banner .dots2 i.on { width: 12px; background: #fff; }
+.qgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; background: #fff; margin: 8px 10px; border-radius: 12px; padding: 10px 4px; text-align: center; font-size: 11px; }
+.qgrid i { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; margin: 0 auto 4px; color: #fff; font-style: normal; font-weight: 700; font-size: 14px; }
+.livecard { margin: 0 10px 8px; background: #fff; border-radius: 12px; padding: 10px; display: flex; gap: 10px; align-items: center; }
+.livecard .lv2 { width: 92px; height: 92px; border-radius: 10px; background: linear-gradient(160deg, #4b3462, #22242c); position: relative; overflow: hidden; flex: none; }
+.livecard .lv2 .on { position: absolute; left: 4px; top: 4px; background: #fe2c55; color: #fff; font-size: 10px; border-radius: 3px; padding: 0 4px; }
+.feed { column-count: 2; column-gap: 8px; padding: 0 10px 10px; }
+.fcard { break-inside: avoid; background: #fff; border-radius: 10px; overflow: hidden; margin-bottom: 8px; display: block; }
+.fcard .im { aspect-ratio: 1 / 1; } .fcard .im.tall { aspect-ratio: 3 / 4; }
+.fcard .tx { padding: 6px 8px 8px; }
+.fcard .nm { font-size: 12px; margin-bottom: 3px; }
+.tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: 52px; background: #fff; border-top: 1px solid #eee; display: grid; grid-template-columns: repeat(5, 1fr); text-align: center; font-size: 10px; color: #646a73; padding-top: 6px; z-index: 3; }
+.tabbar i { display: block; width: 20px; height: 20px; margin: 0 auto 2px; border-radius: 6px; border: 2px solid #8f959e; }
+.tabbar .on { color: #fe2c55; } .tabbar .on i { border-color: #fe2c55; background: #ffe6eb; }
+/* 商详 */
+.hero { aspect-ratio: 1 / 1; position: relative; background: #fff; }
+.hero .idx { position: absolute; right: 10px; bottom: 10px; background: rgba(0,0,0,.35); color: #fff; font-size: 11px; border-radius: 10px; padding: 0 8px; }
+.hero .thumbs { position: absolute; left: 10px; bottom: 10px; display: flex; gap: 4px; }
+.hero .thumbs span { width: 26px; height: 26px; border-radius: 4px; overflow: hidden; border: 1.5px solid #fff; opacity: .8; } .hero .thumbs span.on { border-color: #fe2c55; opacity: 1; }
+.pbar { background: linear-gradient(90deg, #fe2c55, #ff6a3d); color: #fff; padding: 8px 12px; display: flex; align-items: flex-end; gap: 8px; }
+.pbar .p { font-size: 24px; font-weight: 700; line-height: 1; } .pbar .p small { font-size: 13px; }
+.pbar .o { font-size: 11px; opacity: .85; text-decoration: line-through; } .pbar .r { margin-left: auto; font-size: 11px; text-align: right; opacity: .95; }
+.ttl2 { font-size: 15px; font-weight: 600; margin: 4px 0 6px; }
+.rv { padding: 8px 0; border-top: 1px solid #f2f2f2; } .rv .who { display: flex; gap: 6px; align-items: center; color: #646a73; font-size: 11px; }
+.stars { color: #ffb31a; letter-spacing: 1px; font-size: 10px; }
+.shop { display: flex; align-items: center; gap: 10px; }
+.shop .lg2 { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #3370ff, #00b2a9); color: #fff; display: grid; place-items: center; font-weight: 700; }
+.bbar { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: #fff; border-top: 1px solid #eee; display: flex; align-items: center; gap: 6px; padding: 0 10px; z-index: 3; }
+.bbar .ic { font-size: 10px; color: #646a73; text-align: center; width: 32px; line-height: 1.3; }
+.bbar .ic i { display: block; width: 18px; height: 18px; margin: 0 auto 2px; border-radius: 5px; border: 1.5px solid #8f959e; }
+.pill { flex: 1; height: 40px; border-radius: 20px; display: grid; place-items: center; color: #fff; font-weight: 600; font-size: 14px; line-height: 1.1; text-align: center; }
+.pill small { display: block; font-size: 10px; font-weight: 400; opacity: .9; }
 .pill.cart { background: #ffb31a; } .pill.buy { background: #fe2c55; }
-.half-top { position: absolute; top: 0; left: 0; right: 0; height: 170px; background: #2b2f36; }
-.half-top .bline { background: #3b4048; margin: 10px 14px; }
-.half { position: absolute; left: 0; right: 0; top: 150px; bottom: 0; border-radius: 16px 16px 0 0; overflow: hidden; background: #f4f4f4; }
-.half .hero { height: 200px; }
-/* 直播间 */
-.live { position: absolute; inset: 0; background: linear-gradient(180deg, #3a2b45, #1d1f27 60%); color: #fff; }
-.live .host { position: absolute; top: 90px; left: 50%; transform: translateX(-50%); width: 150px; height: 220px; border-radius: 75px 75px 20px 20px; background: rgba(255,255,255,.08); }
-.live .tagl { position: absolute; top: 34px; left: 12px; display: flex; gap: 6px; align-items: center; font-size: 12px; }
-.live .tagl .av { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.25); }
-.live .onair { background: #fe2c55; border-radius: 4px; padding: 0 6px; font-size: 11px; }
-.live .cmts { position: absolute; left: 12px; bottom: 210px; display: grid; gap: 6px; }
-.live .cmts span { background: rgba(0,0,0,.3); border-radius: 10px; height: 20px; display: block; }
-.live .pop { position: absolute; left: 12px; right: 70px; bottom: 70px; background: #fff; color: #1f2329; border-radius: 10px; padding: 8px; display: flex; gap: 8px; align-items: center; }
-.live .pop .ptile { width: 54px; height: 54px; font-size: 18px; }
-.live .pop .go { margin-left: auto; background: #fe2c55; color: #fff; border-radius: 14px; padding: 2px 10px; font-size: 12px; font-weight: 600; white-space: nowrap; }
-.live .cartbtn { position: absolute; left: 12px; bottom: 16px; width: 38px; height: 38px; border-radius: 50%; background: #ffb31a; display: grid; place-items: center; font-size: 11px; font-weight: 700; color: #fff; }
+.dimtop { position: absolute; top: 0; left: 0; right: 0; height: 170px; overflow: hidden; filter: brightness(.45); }
+.half { position: absolute; left: 0; right: 0; top: 140px; bottom: 0; border-radius: 16px 16px 0 0; overflow: hidden; background: #f5f5f5; animation: up .3s ease; }
+.half .grab { position: relative; height: 22px; display: grid; place-items: center; background: #fff; } .half .grab i { width: 40px; height: 5px; border-radius: 3px; background: #ccc; }
+/* 直播 */
+.live { position: absolute; inset: 0; background: linear-gradient(180deg, #4a2f5c, #1d1f27 65%); color: #fff; overflow: hidden; }
+.live .hd { position: absolute; top: 32px; left: 10px; right: 10px; display: flex; align-items: center; gap: 6px; z-index: 2; }
+.live .anc { display: flex; align-items: center; gap: 6px; background: rgba(0,0,0,.3); border-radius: 18px; padding: 3px 4px 3px 3px; }
+.live .anc b { font-size: 12px; } .live .anc small { display: block; font-size: 10px; opacity: .75; font-weight: 400; }
+.live .fl { background: #fe2c55; border-radius: 12px; padding: 2px 10px; font-size: 11px; }
+.live .vw { margin-left: auto; background: rgba(0,0,0,.3); border-radius: 12px; padding: 2px 8px; font-size: 11px; }
+.live .stage { position: absolute; top: 80px; left: 0; right: 0; height: 330px; }
+.live .cmts { position: absolute; left: 10px; bottom: 170px; display: grid; gap: 5px; max-width: 230px; }
+.live .cmts span { background: rgba(0,0,0,.32); border-radius: 12px; padding: 3px 10px; font-size: 12px; width: fit-content; }
+.live .cmts span b { color: #ffd47a; font-weight: 500; margin-right: 4px; }
+.live .pop { position: absolute; left: 10px; right: 72px; bottom: 64px; background: #fff; color: #1f2329; border-radius: 12px; padding: 8px; display: flex; gap: 8px; align-items: center; }
+.live .pop .no { position: absolute; left: 8px; top: 8px; background: rgba(0,0,0,.55); color: #fff; font-size: 10px; border-radius: 3px; padding: 0 4px; z-index: 1; }
+.live .go { margin-left: auto; background: #fe2c55; color: #fff; border-radius: 15px; padding: 4px 12px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.live .ft { position: absolute; left: 10px; right: 10px; bottom: 12px; display: flex; gap: 8px; align-items: center; }
+.live .say { flex: 1; background: rgba(255,255,255,.15); border-radius: 18px; padding: 7px 12px; font-size: 12px; opacity: .8; }
+.live .bag { width: 38px; height: 38px; border-radius: 50%; background: #ffb31a; display: grid; place-items: center; font-weight: 700; position: relative; }
+.live .bag em { position: absolute; top: -4px; right: -4px; background: #fe2c55; border-radius: 8px; font-size: 10px; font-style: normal; padding: 0 4px; }
+.live .heart { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.15); display: grid; place-items: center; color: #ff8fa3; font-size: 18px; }
 /* 规格面板 */
-.mask { position: absolute; inset: 0; background: rgba(0,0,0,.45); z-index: 4; }
-.sheet { position: absolute; left: 0; right: 0; bottom: 0; background: #fff; border-radius: 16px 16px 0 0; padding: 14px 14px 64px; z-index: 5; animation: up .3s ease; }
+.mask { position: absolute; inset: 0; background: rgba(0,0,0,.5); z-index: 4; }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; background: #fff; border-radius: 16px 16px 0 0; padding: 14px 14px 66px; z-index: 5; animation: up .3s ease; }
 @keyframes up { from { transform: translateY(100%); } to { transform: none; } }
-.sheet .grp { margin-top: 12px; color: #646a73; font-size: 12px; }
-.chips2 { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-.chips2 span { border: 1px solid #e4e6eb; background: #f4f4f4; border-radius: 6px; padding: 3px 12px; font-size: 12px; }
-.chips2 span.on { border-color: #fe2c55; background: #fff1f3; color: #fe2c55; }
-.sheet .ok2 { position: absolute; left: 14px; right: 14px; bottom: 12px; height: 40px; border-radius: 20px; background: #fe2c55; color: #fff; display: grid; place-items: center; font-weight: 600; }
-/* 提单 */
-.subbar { position: absolute; left: 0; right: 0; bottom: 0; height: 54px; background: #fff; border-top: 1px solid #eee; display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 0 12px; }
-.subbar .pill { flex: none; width: 120px; }
-.modal { position: absolute; left: 40px; right: 40px; top: 230px; background: #fff; border-radius: 14px; padding: 18px; text-align: center; z-index: 6; box-shadow: 0 8px 30px rgba(0,0,0,.2); animation: in .25s ease; }
-.okc { width: 54px; height: 54px; border-radius: 50%; background: #2ea121; color: #fff; display: grid; place-items: center; font-size: 28px; margin: 0 auto 8px; }
-/* 点击位置与操作提示 */
-.tap { position: relative; }
-.tap::after { content: ""; position: absolute; inset: -5px; border: 2.5px solid #3370ff; border-radius: 12px; animation: pulse 1.2s ease-out infinite; pointer-events: none; z-index: 7; }
-@keyframes pulse { 0% { opacity: 1; transform: scale(.96); } 100% { opacity: 0; transform: scale(1.06); } }
-.finger { position: absolute; z-index: 8; width: 26px; height: 26px; border-radius: 50%; background: rgba(51,112,255,.35); border: 2px solid #3370ff; transform: translate(-50%, -50%); pointer-events: none; animation: press 1.2s ease-out infinite; }
-@keyframes press { 0% { transform: translate(-50%, -50%) scale(.6); } 50% { transform: translate(-50%, -50%) scale(1); } 100% { transform: translate(-50%, -50%) scale(.6); } }
-.toast { position: absolute; left: 10px; right: 10px; top: 72px; background: rgba(20,22,26,.86); color: #fff; border-radius: 10px; padding: 7px 10px; font-size: 12px; z-index: 9; display: flex; gap: 6px; align-items: center; animation: in .25s ease; }
-.toast b { background: #3370ff; border-radius: 4px; padding: 0 5px; font-weight: 600; flex: none; }
-.swipe { position: absolute; z-index: 8; font-size: 22px; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.5); animation: sw 1.2s ease-in-out infinite; }
-@keyframes sw { 0% { transform: translateX(30px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateX(-30px); opacity: 0; } }
-.swipe.v { animation-name: swv; } @keyframes swv { 0% { transform: translateY(30px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-30px); opacity: 0; } }
+.sheet .x { position: absolute; right: 14px; top: 10px; color: #999; font-size: 18px; }
+.sheet .grp { margin-top: 12px; color: #1f2329; font-weight: 600; font-size: 13px; }
+.opts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.opt { border: 1px solid #f0f0f0; background: #f5f5f5; border-radius: 6px; padding: 4px 10px; font-size: 12px; display: flex; align-items: center; gap: 6px; }
+.opt .thumb { width: 26px; height: 26px; border-radius: 4px; }
+.opt.on { border-color: #fe2c55; background: #fff1f3; color: #fe2c55; }
+.opt.dis { color: #c0c3c8; text-decoration: line-through; }
+.qty { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; font-weight: 600; font-size: 13px; }
+.qty span { border: 1px solid #eee; border-radius: 4px; padding: 0 10px; font-weight: 400; }
+.sheet .ok2 { position: absolute; left: 14px; right: 14px; bottom: 12px; height: 42px; border-radius: 21px; background: #fe2c55; color: #fff; display: grid; place-items: center; font-weight: 600; font-size: 14px; }
+/* 提单、支付 */
+.addr { display: flex; gap: 10px; align-items: center; }
+.addr i { width: 30px; height: 30px; border-radius: 50%; background: #fe2c55; color: #fff; display: grid; place-items: center; font-style: normal; font-size: 13px; flex: none; }
+.radio { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #ccc; flex: none; } .radio.on { border: 5px solid #fe2c55; }
+.subbar { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; background: #fff; border-top: 1px solid #eee; display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 0 12px; z-index: 3; }
+.subbar .pill { flex: none; width: 124px; }
+.modal { position: absolute; left: 36px; right: 36px; top: 210px; background: #fff; border-radius: 16px; padding: 20px 18px 16px; text-align: center; z-index: 6; box-shadow: 0 8px 30px rgba(0,0,0,.25); animation: in .25s ease; }
+.modal .pill { margin-top: 14px; height: 38px; }
+.okc { width: 56px; height: 56px; border-radius: 50%; background: #2ea121; color: #fff; display: grid; place-items: center; font-size: 30px; margin: 0 auto 8px; }
+.stat { background: linear-gradient(90deg, #fe2c55, #ff6a3d); color: #fff; padding: 16px 16px 26px; }
+.stat b { font-size: 18px; } .stat p { margin: 2px 0 0; opacity: .9; }
+.steps3 { display: flex; justify-content: space-between; margin-top: 10px; font-size: 11px; opacity: .95; }
+.steps3 span { flex: 1; text-align: center; position: relative; } .steps3 span::before { content: ""; display: block; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.5); margin: 0 auto 3px; }
+.steps3 span.on::before { background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,.35); }
+/* 评价 */
+.rtags { display: flex; flex-wrap: wrap; gap: 6px; }
+.rtags span { background: #fff1f3; color: #fe2c55; border-radius: 12px; padding: 2px 10px; font-size: 11px; } .rtags span.g { background: #f2f3f5; color: #646a73; }
+.pics { display: flex; gap: 6px; margin-top: 6px; } .pics span { width: 74px; height: 74px; border-radius: 6px; overflow: hidden; }
+/* 回放交互：下一步要点的位置、自动点击、提示 */
+[data-act] { cursor: pointer; }
+.next { position: relative; z-index: 7; }
+.next::after { content: ""; position: absolute; inset: -4px; border: 2.5px solid #3370ff; border-radius: 14px; animation: pulse 1.2s ease-out infinite; pointer-events: none; }
+.next.bigt::after { inset: 6px; }
+.nextbub { position: absolute; z-index: 10; pointer-events: none; }
+.nextbub.up { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+.nextbub.up.r { left: auto; right: -4px; transform: none; }
+.nextbub.in { top: 42%; left: 50%; transform: translate(-50%, -50%); }
+.nextbub span { display: block; position: relative; background: #3370ff; color: #fff; font-size: 11px; font-weight: 500; border-radius: 10px; padding: 2px 8px; white-space: nowrap; box-shadow: 0 2px 8px rgba(51,112,255,.4); animation: bob 1.2s ease-in-out infinite; line-height: 1.5; }
+.nextbub.up span::after { content: ""; position: absolute; left: 50%; bottom: -4px; margin-left: -4px; border: 4px solid transparent; border-bottom: 0; border-top-color: #3370ff; }
+.nextbub.up.r span::after { left: auto; right: 8px; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes pulse { 0% { opacity: 1; transform: scale(.97); } 100% { opacity: 0; transform: scale(1.06); } }
+.press { transform: scale(.93); filter: brightness(.9); transition: transform .15s, filter .15s; }
+.ripple { position: absolute; z-index: 11; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: rgba(51,112,255,.45); pointer-events: none; animation: rip .5s ease-out forwards; }
+@keyframes rip { from { transform: scale(.3); opacity: 1; } to { transform: scale(2.2); opacity: 0; } }
+.fallback { position: absolute; left: 50%; bottom: 74px; transform: translateX(-50%); background: #3370ff; color: #fff; border-radius: 20px; padding: 8px 16px; z-index: 12; white-space: nowrap; cursor: pointer; box-shadow: 0 6px 20px rgba(51,112,255,.45); font-size: 12px; animation: in .25s ease; }
+.fallback small { display: block; opacity: .8; font-size: 10px; }
+.hintmsg { position: absolute; left: 20px; right: 20px; top: 46%; background: rgba(20,22,26,.88); color: #fff; border-radius: 10px; padding: 10px 12px; z-index: 20; text-align: center; animation: in .2s ease; pointer-events: none; }
+.cutbox { position: absolute; left: 10px; right: 10px; bottom: 66px; background: #fff; border-radius: 14px; padding: 12px; z-index: 12; box-shadow: 0 8px 28px rgba(0,0,0,.28); animation: in .3s ease; }
+.cutbox .hd2 { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
 .leaving { animation: out 1.4s ease-in infinite; }
-@keyframes out { 0%, 30% { transform: none; opacity: 1; } 100% { transform: translateX(70%); opacity: .2; } }
-.idle { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: #8f959e; padding: 30px; background: #fff; }
+@keyframes out { 0%, 30% { transform: none; opacity: 1; } 100% { transform: translateX(60%); opacity: .25; } }
 @keyframes in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-.cap { text-align: center; margin-top: 10px; min-height: 22px; font-size: 13px; }
-.ctrls { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; justify-content: center; }
+.cap { text-align: center; margin: 0 0 10px; min-height: 44px; }
+.cap .act { display: inline-flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 4px 14px; font-size: 13px; }
+.cap .act b { background: var(--brand); color: #fff; border-radius: 10px; padding: 0 7px; font-size: 12px; }
+.cap .sub { font-size: 12px; color: var(--faint); margin-top: 4px; }
+.ctrls { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; justify-content: center; }
 .thinking { display: none; align-items: center; gap: 8px; color: var(--run); font-size: 13px; }
 .thinking.on { display: flex; }
 .spin { width: 14px; height: 14px; border: 2px solid var(--run-soft); border-top-color: var(--run); border-radius: 50%; animation: s 1s linear infinite; }
@@ -190,6 +272,7 @@ th { color: var(--muted); font-weight: 500; font-size: 12px; background: var(--s
   <div class="brand"><div class="logo">挽</div>智能挽单 · 真实案例回放 <small>Qwen3.5-4B + LoRA 第三轮</small></div>
   <div class="spacer"></div>
   <span class="chip">7 个测试集案例 · 已脱敏</span>
+  <span class="chip">手机界面为示意</span>
 </div>
 
 <div class="grid">
@@ -206,8 +289,8 @@ th { color: var(--muted); font-weight: 500; font-size: 12px; background: var(--s
   </div>
 
   <div class="mid">
-    <div class="phone"><div class="screen" id="screen"></div></div>
     <div class="cap" id="cap"></div>
+    <div class="phone"><div class="screen" id="screen"></div></div>
     <div class="ctrls">
       <button class="btn primary" id="bStep">回放下一步</button>
       <button class="btn" id="bAuto">自动回放到截点</button>
@@ -221,7 +304,7 @@ th { color: var(--muted); font-weight: 500; font-size: 12px; background: var(--s
 
   <div id="right"></div>
 </div>
-<div class="note">说明：手机里是通用购物 App 的示意界面，按真实埋点里的页面和动作逐步还原，不对应任何具体平台的界面；商品、价格和用户标识均已隐去。每一步的模型输出是本地推理预先跑好的，页面里不调用模型。案例取自测试集（训练时模型没有见过）；“当天下单”是离线核对，不代表真实干预效果。</div>
+<div class="note">说明：手机里是通用购物 App 的示意界面，按真实埋点里的页面和动作逐步还原；商品图、商品名、价格、评价、直播内容都是示意，不对应真实商品，也不对应任何具体平台的界面。真实埋点只有“在哪个页面、做了什么、停留多久”。每一步的模型输出是本地推理预先跑好的，页面里不调用模型。案例取自测试集（训练时模型没有见过）；“当天下单”是离线核对，不代表真实干预效果。</div>
 
 <script>window.CASES = [{"no": 1, "group": "强下单", "title": "提单页选好规格后提交订单", "kind": "主例", "next_action": "提交订单", "buy_day": 1, "after": ["提交订单成功", "从提单页返回", "支付成功"], "gpu": {"上一步预测": {"预测": "提单返回", "实际": "提交订单", "是否命中": "未命中"}, "意图修正": "实际是「提交订单」而非「提单返回」，场景不变", "当前场景": "正常推进", "其他场景": ["购买推进·提单", "信息不足"], "依据步骤": [2, 3, 5], "意图": "按正常流程推进购买，没有明显反复（#2、#3、#5）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "很高", "依据": "进入过提单页2次；完成过规格选择"}, "下一步预测": ["提交订单", "提单返回", "支付成功"]}, "steps": [{"页面": "订单列表", "商品": null, "动作": "查看订单列表", "停留": null, "重复": 2}, {"页面": "提单页", "商品": "商品A", "动作": "进入提单页", "停留": null, "重复": 2}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "完成规格选择", "停留": null, "重复": null}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "打开规格面板", "停留": null, "重复": 2}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "完成规格选择", "停留": null, "重复": null}, {"页面": "提单页", "商品": "商品A", "动作": "点击「提交订单」", "停留": null, "重复": 2}], "judgments": [{"out": {"上一步预测": {"预测": "", "实际": "其他导航", "是否命中": "未命中"}, "意图修正": "「其他导航」让场景变为信息不足", "当前场景": "信息不足", "其他场景": [], "依据步骤": [1], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#1）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["进入新商品详情", "其他导航", "本次会话结束"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "信息不足，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "进入提单", "top1": false, "top3": false}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "随便看看", "score": 70}, {"out": {"上一步预测": {"预测": "进入新商品详情", "实际": "进入提单", "是否命中": "未命中"}, "意图修正": "「进入提单」让场景变为购买推进·提单", "当前场景": "购买推进·提单", "其他场景": ["正常推进", "信息不足"], "依据步骤": [2], "意图": "已进入提单页，正在推进购买（#2）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "中", "依据": "进入过提单页2次"}, "下一步预测": ["打开规格面板", "完成规格选择", "看图"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "购买推进·提单，但意愿中，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "完成规格选择", "top1": false, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "购买推进·提单", "score": 100}, {"out": {"上一步预测": {"预测": "打开规格面板", "实际": "完成规格选择", "是否命中": "未命中"}, "意图修正": "「完成规格选择」让场景变为正常推进", "当前场景": "正常推进", "其他场景": ["购买推进·提单", "信息不足"], "依据步骤": [2, 3], "意图": "按正常流程推进购买，没有明显反复（#2、#3）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "高", "依据": "进入过提单页2次；完成过规格选择"}, "下一步预测": ["打开规格面板", "看图", "提单返回"]}, "suggest": {"key": "keep_flow", "策略": "保持流程（不打扰）", "级别": "不干预", "判别": "正在推进（正常推进），意愿高", "点位": "提单页", "措施": "不弹窗、不发券，只保证支付和地址等流程顺畅", "时机": "当前这一步", "不干预条件": "出现提单返回后转\"交易障碍排查\""}, "hit": {"实际": "打开规格面板", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "正常推进", "score": 100}, {"out": {"上一步预测": {"预测": "打开规格面板", "实际": "打开规格面板", "是否命中": "命中"}, "意图修正": "「打开规格面板」让场景变为信息不足", "当前场景": "信息不足", "其他场景": ["购买推进·提单", "正常推进"], "依据步骤": [2, 3, 4], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#2、#3、#4）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "高", "依据": "进入过提单页2次；完成过规格选择"}, "下一步预测": ["提单返回", "完成规格选择", "提交订单"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "信息不足，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "完成规格选择", "top1": false, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "信息不足", "score": 100}, {"out": {"上一步预测": {"预测": "提单返回", "实际": "完成规格选择", "是否命中": "未命中"}, "意图修正": "「完成规格选择」让场景变为正常推进", "当前场景": "正常推进", "其他场景": ["购买推进·提单", "信息不足"], "依据步骤": [2, 3, 5], "意图": "按正常流程推进购买，没有明显反复（#2、#3、#5）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "高", "依据": "进入过提单页2次；完成过规格选择"}, "下一步预测": ["提单返回", "选择或切换规格", "看图"]}, "suggest": {"key": "keep_flow", "策略": "保持流程（不打扰）", "级别": "不干预", "判别": "正在推进（正常推进），意愿高", "点位": "提单页", "措施": "不弹窗、不发券，只保证支付和地址等流程顺畅", "时机": "当前这一步", "不干预条件": "出现提单返回后转\"交易障碍排查\""}, "hit": {"实际": "提交订单", "top1": false, "top3": false}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "正常推进", "score": 100}, {"out": {"上一步预测": {"预测": "提单返回", "实际": "提交订单", "是否命中": "未命中"}, "意图修正": "实际是「提交订单」而非「提单返回」，场景不变", "当前场景": "正常推进", "其他场景": ["购买推进·提单", "信息不足"], "依据步骤": [2, 3, 5], "意图": "按正常流程推进购买，没有明显反复（#2、#3、#5）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "很高", "依据": "进入过提单页2次；完成过规格选择"}, "下一步预测": ["提交订单", "提单返回", "支付成功"]}, "suggest": {"key": "keep_flow", "策略": "保持流程（不打扰）", "级别": "不干预", "判别": "正在推进（正常推进），意愿很高", "点位": "提单页", "措施": "不弹窗、不发券，只保证支付和地址等流程顺畅", "时机": "当前这一步", "不干预条件": "出现提单返回后转\"交易障碍排查\""}, "hit": {"实际": "提交订单", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "正常推进", "score": 100}]}, {"no": 2, "group": "强下单", "title": "进提单页 8 秒后返回", "kind": "对照", "next_action": "本次会话结束", "buy_day": 0, "after": [], "gpu": {"上一步预测": {"预测": "完成规格选择", "实际": "提单返回", "是否命中": "未命中"}, "意图修正": "「提单返回」让场景变为购买推进·提单返回", "当前场景": "购买推进·提单返回", "其他场景": ["信息不足"], "依据步骤": [2, 4], "意图": "进入提单后又返回，购买推进中断，原因暂不明确（#2、#4）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "低", "依据": "进入过提单页2次；从提单页返回1次"}, "下一步预测": ["本次会话结束", "离开商品", "点开商品卡"]}, "steps": [{"页面": "直播间", "商品": "商品A", "动作": "在「直播间」点开商品", "停留": null, "重复": null}, {"页面": "提单页", "商品": "商品A", "动作": "进入提单页", "停留": null, "重复": 2}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "打开规格面板", "停留": null, "重复": 2}, {"页面": "提单页", "商品": "商品A", "动作": "从提单页返回", "停留": 8, "重复": null}], "judgments": [{"out": {"上一步预测": {"预测": "", "实际": "点开商品卡", "是否命中": "未命中"}, "意图修正": "「点开商品卡」让场景变为信息不足", "当前场景": "信息不足", "其他场景": [], "依据步骤": [1], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#1）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "低", "依据": "只有浏览行为"}, "下一步预测": ["进入提单", "进入新商品详情", "其他导航"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "信息不足，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "进入提单", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "信息不足", "score": 100}, {"out": {"上一步预测": {"预测": "进入提单", "实际": "进入提单", "是否命中": "命中"}, "意图修正": "「进入提单」让场景变为购买推进·提单", "当前场景": "购买推进·提单", "其他场景": ["正常推进", "信息不足"], "依据步骤": [2], "意图": "已进入提单页，正在推进购买（#2）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "中", "依据": "进入过提单页2次"}, "下一步预测": ["打开规格面板", "完成规格选择", "看图"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "购买推进·提单，但意愿中，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "打开规格面板", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "购买推进·提单", "score": 100}, {"out": {"上一步预测": {"预测": "打开规格面板", "实际": "打开规格面板", "是否命中": "命中"}, "意图修正": "「打开规格面板」让场景变为信息不足", "当前场景": "信息不足", "其他场景": ["购买推进·提单", "正常推进"], "依据步骤": [1, 2, 3], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#1、#2、#3）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "中", "依据": "进入过提单页2次"}, "下一步预测": ["提单返回", "完成规格选择", "选择或切换规格"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "信息不足，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "提单返回", "top1": true, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "信息不足", "score": 100}, {"out": {"上一步预测": {"预测": "提单返回", "实际": "提单返回", "是否命中": "命中"}, "意图修正": "「提单返回」让场景变为购买推进·提单返回", "当前场景": "购买推进·提单返回", "其他场景": ["信息不足"], "依据步骤": [2, 4], "意图": "进入提单后又返回，购买推进中断，原因暂不明确（#2、#4）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "低", "依据": "进入过提单页2次；从提单页返回1次"}, "下一步预测": ["本次会话结束", "离开商品", "点开商品卡"]}, "suggest": {"key": "checkout_rescue", "策略": "交易障碍排查", "级别": "轻提示", "判别": "购买推进·提单返回；意愿低", "点位": "从提单页返回后的商详页（底部浮层）", "措施": "展示到手价明细（优惠、运费）；保留已选规格，一键回到提单", "时机": "用户离开前（预测下一步：本次会话结束）", "不干预条件": "意愿 低 且下一步预测为离开时，只做轻提示"}, "hit": {"实际": "本次会话结束", "top1": true, "top3": true}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "购买推进·提单返回", "score": 100}]}, {"no": 3, "group": "强选品", "title": "两个商品间来回，回来再选规格", "kind": "主例", "next_action": "选择或切换规格", "buy_day": 1, "after": ["切换规格", "完成规格选择", "点击规格面板底部的购买按钮"], "gpu": {"上一步预测": {"预测": "选择或切换规格", "实际": "选择或切换规格", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "信息确认·规格", "其他场景": [], "依据步骤": [5, 6, 12], "意图": "在规格面板反复选择或未完成选择，可能还在确认规格（#5、#6、#12）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "中", "依据": "完成过规格选择"}, "下一步预测": ["完成规格选择", "选择或切换规格", "看图"]}, "steps": [{"页面": "商品详情Native", "商品": "商品A", "动作": "进入商品详情页", "停留": null, "重复": null}, {"页面": "商品详情Native", "商品": "商品A", "动作": "从半屏商详上滑到全屏", "停留": null, "重复": null}, {"页面": "商品详情Native", "商品": "商品A", "动作": "在商品详情页点击该商品（埋点未区分具体按钮）", "停留": null, "重复": null}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "打开规格面板", "停留": null, "重复": 2}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "在规格面板选择规格项", "停留": null, "重复": null}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "切换规格", "停留": null, "重复": null}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "完成规格选择", "停留": null, "重复": null}, {"页面": "直播间", "商品": "商品B", "动作": "在「直播间」点开商品", "停留": null, "重复": null}, {"页面": "电商SKU面板", "商品": "商品B", "动作": "打开规格面板", "停留": null, "重复": 2}, {"页面": "直播间", "商品": "商品A", "动作": "在「直播间」点开商品", "停留": null, "重复": null}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "打开规格面板", "停留": null, "重复": 2}, {"页面": "电商SKU面板", "商品": "商品A", "动作": "在规格面板选择规格项", "停留": null, "重复": null}], "judgments": [{"out": {"上一步预测": {"预测": "", "实际": "进入新商品详情", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "随便看看", "其他场景": [], "依据步骤": [1], "意图": "没有聚焦某个商品，属于随便看看（#1）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["点开商品卡", "离开商品", "看图"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "其他导航", "top1": false, "top3": false}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "点开商品卡", "实际": "其他导航", "是否命中": "未命中"}, "意图修正": "实际是「其他导航」而非「点开商品卡」，场景不变", "当前场景": "随便看看", "其他场景": [], "依据步骤": [2], "意图": "没有聚焦某个商品，属于随便看看（#2）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["看评价", "点开商品卡", "进入新商品详情"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "点开商品卡", "top1": false, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "看评价", "实际": "点开商品卡", "是否命中": "未命中"}, "意图修正": "实际是「点开商品卡」而非「看评价」，场景不变", "当前场景": "随便看看", "其他场景": [], "依据步骤": [3], "意图": "没有聚焦某个商品，属于随便看看（#3）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "中", "依据": "只有浏览行为"}, "下一步预测": ["进入提单", "进入新商品详情", "其他导航"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "打开规格面板", "top1": false, "top3": false}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "进入提单", "实际": "打开规格面板", "是否命中": "未命中"}, "意图修正": "实际是「打开规格面板」而非「进入提单」，场景不变", "当前场景": "随便看看", "其他场景": [], "依据步骤": [4], "意图": "没有聚焦某个商品，属于随便看看（#4）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "中", "依据": "只有浏览行为"}, "下一步预测": ["选择或切换规格", "完成规格选择", "进入提单"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "选择或切换规格", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "选择或切换规格", "实际": "选择或切换规格", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "随便看看", "其他场景": [], "依据步骤": [5], "意图": "没有聚焦某个商品，属于随便看看（#5）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "只有浏览行为"}, "下一步预测": ["完成规格选择", "选择或切换规格", "看图"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "选择或切换规格", "top1": false, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "完成规格选择", "实际": "选择或切换规格", "是否命中": "未命中"}, "意图修正": "「选择或切换规格」让场景变为信息确认·规格", "当前场景": "信息确认·规格", "其他场景": [], "依据步骤": [5, 6], "意图": "在规格面板反复选择或未完成选择，可能还在确认规格（#5、#6）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "低", "依据": "只有浏览行为"}, "下一步预测": ["完成规格选择", "选择或切换规格", "看图"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "信息确认·规格，但意愿低且没有直接证据", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "完成规格选择", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "信息确认·规格", "score": 100}, {"out": {"上一步预测": {"预测": "完成规格选择", "实际": "完成规格选择", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "信息确认·规格", "其他场景": [], "依据步骤": [5, 6], "意图": "在规格面板反复选择或未完成选择，可能还在确认规格（#5、#6）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "中", "依据": "完成过规格选择"}, "下一步预测": ["完成规格选择", "选择或切换规格", "提单返回"]}, "suggest": {"key": "spec_help", "策略": "规格确认帮助", "级别": "轻提示", "判别": "信息确认·规格；意愿中", "点位": "规格面板内", "措施": "尺码 / 规格对照、所选规格大图、常买规格提示", "时机": "当前这一步", "不干预条件": "只打开过一次面板且意愿低，不干预"}, "hit": {"实际": "点开商品卡", "top1": false, "top3": false}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "信息确认·规格", "score": 100}, {"out": {"上一步预测": {"预测": "完成规格选择", "实际": "点开商品卡", "是否命中": "未命中"}, "意图修正": "「点开商品卡」让场景变为信息不足", "当前场景": "信息不足", "其他场景": [], "依据步骤": [8], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#8）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "中", "依据": "只有浏览行为"}, "下一步预测": ["进入提单", "打开规格面板", "选择或切换规格"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "信息不足，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "打开规格面板", "top1": false, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "信息不足", "score": 100}, {"out": {"上一步预测": {"预测": "进入提单", "实际": "打开规格面板", "是否命中": "未命中"}, "意图修正": "实际是「打开规格面板」而非「进入提单」，场景不变", "当前场景": "信息不足", "其他场景": [], "依据步骤": [8, 9], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#8、#9）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "低", "依据": "只有浏览行为"}, "下一步预测": ["选择或切换规格", "完成规格选择", "进入提单"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "信息不足，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "点开商品卡", "top1": false, "top3": false}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "信息不足", "score": 100}, {"out": {"上一步预测": {"预测": "选择或切换规格", "实际": "点开商品卡", "是否命中": "未命中"}, "意图修正": "预期切换规格，实际#10 点开商品卡，场景转为同品复看", "当前场景": "比较选款·同品复看", "其他场景": ["信息确认·规格", "信息不足"], "依据步骤": [1, 10], "意图": "#6 切换规格后#7 完成选择，#10 又从直播间点开该商品，可能在复看确认", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "可能在确认规格，原因不明"}, "购买意愿": {"档位": "中", "依据": "第2次访问该商品；完成过规格选择"}, "下一步预测": ["打开规格面板", "进入提单", "选择或切换规格"]}, "suggest": {"key": "revisit", "策略": "复看承接", "级别": "轻提示", "判别": "比较选款·同品复看；意愿中", "点位": "再次进入的商详首屏", "措施": "回显上次看过的规格和价格；收藏、降价提醒入口", "时机": "当前这一步", "不干预条件": "意愿 低 时只放收藏入口"}, "hit": {"实际": "打开规格面板", "top1": true, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "信息确认·规格", "score": 83}, {"out": {"上一步预测": {"预测": "打开规格面板", "实际": "打开规格面板", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "比较选款·同品复看", "其他场景": ["信息确认·规格"], "依据步骤": [1, 10], "意图": "离开后又回到同一商品，仍在考虑这款商品（#1、#10）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "中", "依据": "第2次访问该商品；完成过规格选择"}, "下一步预测": ["选择或切换规格", "完成规格选择", "提单返回"]}, "suggest": {"key": "revisit", "策略": "复看承接", "级别": "轻提示", "判别": "比较选款·同品复看；意愿中", "点位": "再次进入的商详首屏", "措施": "回显上次看过的规格和价格；收藏、降价提醒入口", "时机": "当前这一步", "不干预条件": "意愿 低 时只放收藏入口"}, "hit": {"实际": "选择或切换规格", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "信息确认·规格", "score": 83}, {"out": {"上一步预测": {"预测": "选择或切换规格", "实际": "选择或切换规格", "是否命中": "命中"}, "意图修正": "「选择或切换规格」让场景变为信息确认·规格", "当前场景": "信息确认·规格", "其他场景": ["比较选款·同品复看"], "依据步骤": [5, 6, 12], "意图": "在规格面板反复选择或未完成选择，可能还在确认规格（#5、#6、#12）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "中", "依据": "第2次访问该商品；完成过规格选择"}, "下一步预测": ["完成规格选择", "选择或切换规格", "看图"]}, "suggest": {"key": "spec_help", "策略": "规格确认帮助", "级别": "轻提示", "判别": "信息确认·规格；意愿中", "点位": "规格面板内", "措施": "尺码 / 规格对照、所选规格大图、常买规格提示", "时机": "当前这一步", "不干预条件": "只打开过一次面板且意愿低，不干预"}, "hit": {"实际": "选择或切换规格", "top1": false, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "信息确认·规格", "score": 100}]}, {"no": 4, "group": "强选品", "title": "进商详只滑了一次主图", "kind": "对照", "next_action": "其他导航", "buy_day": 0, "after": ["从半屏商详上滑到全屏", "进入商品评价页"], "gpu": {"上一步预测": {"预测": "看图", "实际": "看图", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "随便看看", "其他场景": [], "依据步骤": [2], "意图": "没有聚焦某个商品，属于随便看看（#2）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "只有浏览行为"}, "下一步预测": ["其他导航", "进入新商品详情", "点开商品卡"]}, "steps": [{"页面": "商品详情Native", "商品": "商品A", "动作": "进入商品详情页", "停留": null, "重复": null}, {"页面": "商品详情Native", "商品": "商品A", "动作": "滑动查看商品主图", "停留": null, "重复": null}], "judgments": [{"out": {"上一步预测": {"预测": "", "实际": "进入新商品详情", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "随便看看", "其他场景": [], "依据步骤": [1], "意图": "没有聚焦某个商品，属于随便看看（#1）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["点开商品卡", "离开商品", "看图"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "看图", "top1": false, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "点开商品卡", "实际": "看图", "是否命中": "未命中"}, "意图修正": "实际是「看图」而非「点开商品卡」，场景不变", "当前场景": "随便看看", "其他场景": [], "依据步骤": [2], "意图": "没有聚焦某个商品，属于随便看看（#2）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "只有浏览行为"}, "下一步预测": ["其他导航", "进入新商品详情", "点开商品卡"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "其他导航", "top1": true, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "随便看看", "score": 100}]}, {"no": 5, "group": "信息征询", "title": "进商详后反复看评价", "kind": "主例", "next_action": "本次会话结束", "buy_day": 0, "after": [], "gpu": {"上一步预测": {"预测": "看评价", "实际": "看评价", "是否命中": "命中"}, "意图修正": "「看评价」让场景变为信息确认·评价", "当前场景": "信息确认·评价", "其他场景": [], "依据步骤": [3], "意图": "进入了商品评价页，可能在核实评价（#3）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "低", "依据": "只有浏览行为"}, "下一步预测": ["本次会话结束", "进入新商品详情", "点开商品卡"]}, "steps": [{"页面": "商品详情Native", "商品": "商品A", "动作": "进入商品详情页", "停留": null, "重复": null}, {"页面": "商品详情Native", "商品": "商品A", "动作": "从半屏商详上滑到全屏", "停留": null, "重复": null}, {"页面": "商品详情Native", "商品": "商品A", "动作": "进入商品评价页", "停留": null, "重复": 5}], "judgments": [{"out": {"上一步预测": {"预测": "", "实际": "进入新商品详情", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "随便看看", "其他场景": [], "依据步骤": [1], "意图": "没有聚焦某个商品，属于随便看看（#1）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["点开商品卡", "离开商品", "看图"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "其他导航", "top1": false, "top3": false}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "点开商品卡", "实际": "其他导航", "是否命中": "未命中"}, "意图修正": "实际是「其他导航」而非「点开商品卡」，场景不变", "当前场景": "随便看看", "其他场景": [], "依据步骤": [2], "意图": "没有聚焦某个商品，属于随便看看（#2）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["看评价", "点开商品卡", "进入新商品详情"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "看评价", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "看评价", "实际": "看评价", "是否命中": "命中"}, "意图修正": "「看评价」让场景变为信息确认·评价", "当前场景": "信息确认·评价", "其他场景": [], "依据步骤": [3], "意图": "进入了商品评价页，可能在核实评价（#3）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "低", "依据": "只有浏览行为"}, "下一步预测": ["本次会话结束", "进入新商品详情", "点开商品卡"]}, "suggest": {"key": "review_summary", "策略": "评价摘要", "级别": "轻提示", "判别": "信息确认·评价；意愿低", "点位": "评价页返回商详时的评价模块", "措施": "评价要点摘要（好评、差评维度）、带图评价置顶", "时机": "用户离开前（预测下一步：本次会话结束）", "不干预条件": "—"}, "hit": {"实际": "本次会话结束", "top1": true, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "信息确认·评价", "score": 100}]}, {"no": 6, "group": "订单服务", "title": "提交成功、支付后查看订单", "kind": "主例", "next_action": "进入新商品详情", "buy_day": 0, "after": ["进入商品详情页", "从半屏商详上滑到全屏", "查看订单详情"], "gpu": {"上一步预测": {"预测": "离开商品", "实际": "其他导航", "是否命中": "未命中"}, "意图修正": "「其他导航」让场景变为信息不足", "当前场景": "信息不足", "其他场景": [], "依据步骤": [4], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#4）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "已下单", "依据": "#1 提交订单"}, "下一步预测": ["本次会话结束", "其他导航", "进入新商品详情"]}, "steps": [{"页面": "提单页", "商品": null, "动作": "提交订单成功", "停留": null, "重复": null}, {"页面": "提单页", "商品": null, "动作": "从提单页返回", "停留": 9, "重复": null}, {"页面": "支付成功页", "商品": null, "动作": "支付成功", "停留": null, "重复": null}, {"页面": "订单详情", "商品": "商品A", "动作": "查看订单详情", "停留": null, "重复": null}], "judgments": [{"out": {"上一步预测": {"预测": "", "实际": "提交订单", "是否命中": "未命中"}, "意图修正": "「提交订单」让场景变为信息不足", "当前场景": "信息不足", "其他场景": ["购买推进·提单", "正常推进"], "依据步骤": [1], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#1）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "已下单", "依据": "#1 提交订单"}, "下一步预测": ["提单返回", "支付成功", "提交订单"]}, "suggest": {"key": "order_service", "策略": "订单服务承接", "级别": "主动帮助", "判别": "当天已对该商品下单", "点位": "订单详情页 / 商详顶部的订单条", "措施": "停止促单；提供查物流、改地址、售后入口", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "提单返回", "top1": true, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "随便看看", "score": 70}, {"out": {"上一步预测": {"预测": "提单返回", "实际": "提单返回", "是否命中": "命中"}, "意图修正": "「提单返回」让场景变为购买推进·提单返回", "当前场景": "购买推进·提单返回", "其他场景": ["信息不足"], "依据步骤": [1, 2], "意图": "进入提单后又返回，购买推进中断，原因暂不明确（#1、#2）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "已下单", "依据": "#1 提交订单"}, "下一步预测": ["支付成功", "其他导航", "离开商品"]}, "suggest": {"key": "order_service", "策略": "订单服务承接", "级别": "主动帮助", "判别": "当天已对该商品下单", "点位": "订单详情页 / 商详顶部的订单条", "措施": "停止促单；提供查物流、改地址、售后入口", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "支付成功", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "随便看看", "score": 70}, {"out": {"上一步预测": {"预测": "支付成功", "实际": "支付成功", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "购买推进·提单返回", "其他场景": ["信息不足"], "依据步骤": [2], "意图": "#1 提交订单成功，#2 从提单页返回，#3 支付成功，购买已完成", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "已下单", "依据": "#1 提交订单"}, "下一步预测": ["本次会话结束", "离开商品", "其他导航"]}, "suggest": {"key": "order_service", "策略": "订单服务承接", "级别": "主动帮助", "判别": "当天已对该商品下单", "点位": "订单详情页 / 商详顶部的订单条", "措施": "停止促单；提供查物流、改地址、售后入口", "时机": "用户离开前（预测下一步：本次会话结束）", "不干预条件": "—"}, "hit": {"实际": "其他导航", "top1": false, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "随便看看", "score": 70}, {"out": {"上一步预测": {"预测": "本次会话结束", "实际": "其他导航", "是否命中": "未命中"}, "意图修正": "「其他导航」让场景变为信息不足", "当前场景": "信息不足", "其他场景": [], "依据步骤": [4], "意图": "缺少该商品的商详浏览记录，无法判断具体意图（#4）", "顾虑判断": {"结论": "证据不足", "可能的顾虑": "原因不明"}, "购买意愿": {"档位": "已下单", "依据": "#1 提交订单"}, "下一步预测": ["本次会话结束", "其他导航", "进入新商品详情"]}, "suggest": {"key": "order_service", "策略": "订单服务承接", "级别": "主动帮助", "判别": "当天已对该商品下单", "点位": "订单详情页 / 商详顶部的订单条", "措施": "停止促单；提供查物流、改地址、售后入口", "时机": "用户离开前（预测下一步：本次会话结束）", "不干预条件": "—"}, "hit": {"实际": "进入新商品详情", "top1": false, "top3": true}, "base_hit": {"top1": false, "top3": false}, "rule_scene": "信息不足", "score": 87}]}, {"no": 7, "group": "泛浏览", "title": "进商详停留 10 秒就离开", "kind": "主例", "next_action": "进入新商品详情", "buy_day": 0, "after": ["进入商品详情页", "离开商品详情页", "进入店铺页"], "gpu": {"上一步预测": {"预测": "看图", "实际": "离开商品", "是否命中": "未命中"}, "意图修正": "实际是「离开商品」而非「看图」，场景不变", "当前场景": "随便看看", "其他场景": [], "依据步骤": [2], "意图": "没有聚焦某个商品，属于随便看看（#2）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["进入新商品详情", "本次会话结束", "点开商品卡"]}, "steps": [{"页面": "商品详情Native", "商品": "商品A", "动作": "进入商品详情页", "停留": 10, "重复": null}, {"页面": "商品详情Native", "商品": "商品A", "动作": "离开商品详情页", "停留": null, "重复": null}], "judgments": [{"out": {"上一步预测": {"预测": "", "实际": "进入新商品详情", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "随便看看", "其他场景": [], "依据步骤": [1], "意图": "没有聚焦某个商品，属于随便看看（#1）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["离开商品", "看图", "其他导航"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "离开商品", "top1": true, "top3": true}, "base_hit": {"top1": false, "top3": true}, "rule_scene": "随便看看", "score": 100}, {"out": {"上一步预测": {"预测": "离开商品", "实际": "离开商品", "是否命中": "命中"}, "意图修正": "符合预期，保持判断", "当前场景": "随便看看", "其他场景": [], "依据步骤": [2], "意图": "没有聚焦某个商品，属于随便看看（#2）", "顾虑判断": {"结论": "无明显顾虑", "可能的顾虑": ""}, "购买意愿": {"档位": "低", "依据": "刚离开该商品"}, "下一步预测": ["进入新商品详情", "本次会话结束", "点开商品卡"]}, "suggest": {"key": "none", "策略": "不干预，正常推荐", "级别": "不干预", "判别": "随便看看，没有具体信号", "点位": "—", "措施": "保持正常推荐流，不弹窗", "时机": "当前这一步", "不干预条件": "—"}, "hit": {"实际": "进入新商品详情", "top1": true, "top3": true}, "base_hit": {"top1": true, "top3": true}, "rule_scene": "随便看看", "score": 100}]}];</script>
 <script>
@@ -229,125 +312,294 @@ const C = window.CASES || [];
 const BAND = { '低': 'b0', '中': 'b1', '高': 'b2', '很高': 'b3', '已下单': 'bok' };
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const $ = id => document.getElementById(id);
-let cur = 0, shown = 0, sel = -1, busy = false, timer = null;
+let cur = 0, shown = 0, sel = -1, busy = false, timer = null, target = null, attachT = null;
 
 function band(b, cls) { return `<span class="band ${BAND[b] || 'b0'}${cls ? ' ' + cls : ''}">${esc(b || '—')}</span>`; }
 
-// ---------- 手机界面：按页面和动作画出这一步用户看到、点到的东西 ----------
-const HUE = { '商品A': [221, 255], '商品B': [24, 350], '商品C': [150, 190] };
-function tile(p, cls = 'ptile') {
-  const [a, b] = HUE[p] || [210, 240];
-  return `<div class="${cls}" style="background:linear-gradient(135deg,hsl(${a} 70% 58%),hsl(${b} 65% 48%))">${esc((p || '商品').slice(-1))}</div>`;
+// ================= 示意商品与插画 =================
+const ART = {
+  shoe: c => `<path d="M12 64c0-8 6-14 14-16l14-8c3 5 10 8 17 7l14 6c9 3 15 8 15 13v4H12z" fill="${c}"/><rect x="10" y="66" width="80" height="9" rx="4.5" fill="#fff" stroke="#d5d7db"/><path d="M38 47l6 4M43 44l6 4M48 42l6 4" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>`,
+  hoodie: c => `<path d="M35 22c4 6 26 6 30 0l18 10 8 22-12 4v24H21V58L9 54l8-22z" fill="${c}"/><path d="M40 22c2 10 18 10 20 0" fill="none" stroke="#fff" stroke-width="3"/><rect x="38" y="58" width="24" height="12" rx="3" fill="rgba(255,255,255,.35)"/>`,
+  bag: c => `<path d="M36 38v-8a14 14 0 0 1 28 0v8" fill="none" stroke="${c}" stroke-width="5"/><rect x="20" y="36" width="60" height="48" rx="10" fill="${c}"/><rect x="40" y="52" width="20" height="8" rx="3" fill="rgba(255,255,255,.5)"/>`,
+  cup: c => `<path d="M64 38h8a8 8 0 0 1 0 16h-8" fill="none" stroke="${c}" stroke-width="5"/><rect x="30" y="24" width="34" height="60" rx="8" fill="${c}"/><rect x="28" y="16" width="38" height="11" rx="4" fill="#555"/>`,
+  phones: c => `<path d="M24 60V48a26 26 0 0 1 52 0v12" fill="none" stroke="#444" stroke-width="6"/><rect x="16" y="54" width="18" height="28" rx="7" fill="${c}"/><rect x="66" y="54" width="18" height="28" rx="7" fill="${c}"/>`,
+  lipstick: c => `<rect x="40" y="56" width="20" height="30" rx="3" fill="#333"/><rect x="42" y="40" width="16" height="18" fill="#c9a24a"/><path d="M43 40V22l14-6v24z" fill="${c}"/>`,
+  snack: c => `<rect x="22" y="28" width="56" height="54" rx="6" fill="${c}"/><rect x="22" y="28" width="56" height="13" rx="6" fill="rgba(0,0,0,.15)"/><circle cx="40" cy="62" r="6" fill="#fff"/><circle cx="57" cy="66" r="5" fill="#fff"/><circle cx="50" cy="53" r="4" fill="#fff"/>`,
+  watch: c => `<rect x="40" y="12" width="20" height="76" rx="6" fill="#555"/><circle cx="50" cy="50" r="20" fill="#fff" stroke="${c}" stroke-width="6"/><path d="M50 50V38M50 50l8 5" stroke="#333" stroke-width="3" stroke-linecap="round"/>`,
+  tee: c => `<path d="M34 22l-22 12 8 16 10-4v36h40V46l10 4 8-16-22-12c-2 6-8 9-16 9s-14-3-16-9z" fill="${c}"/>`,
+  lamp: c => `<path d="M30 46l10-26h20l10 26z" fill="${c}"/><rect x="47" y="46" width="6" height="30" fill="#777"/><rect x="34" y="76" width="32" height="7" rx="3" fill="#555"/>`,
+};
+function art(kind, hue, v = 0) {
+  const c = `hsl(${hue} 62% ${52 + v * 6}%)`;
+  return `<svg class="art" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"><rect width="100" height="100" fill="hsl(${hue} 55% ${93 - v * 2}%)"/>${(ART[kind] || ART.bag)(c)}</svg>`;
 }
-const sbar = dark => `<div class="sbar${dark ? ' dark' : ''}"><span>9:41</span><span>▮▮▮ ◔</span></div>`;
-const nav = (t, tap) => `${sbar()}<div class="nav"><span class="bk${tap ? ' tap' : ''}">‹</span><span class="ttl">${t}</span></div>`;
-const T = on => on ? ' tap' : '';
-const lines = (n, w = ['', 'w80', 'w60']) => Array.from({ length: n }, (_, i) => `<div class="bline ${w[i % w.length]}"></div>`).join('');
+// 案例里的商品（商品A/B/C）在界面上用固定的示意图；其他推荐卡片纯属装饰
+const PROD = {
+  '商品A': { art: 'shoe', hue: 222, name: '商品A（示意）轻量透气休闲运动鞋 男女同款', price: 199, was: 269, coupon: 20, sold: '3000+' },
+  '商品B': { art: 'hoodie', hue: 18, name: '商品B（示意）宽松连帽卫衣 加绒保暖', price: 159, was: 219, coupon: 15, sold: '1.2万' },
+  '商品C': { art: 'bag', hue: 160, name: '商品C（示意）大容量双肩通勤包', price: 129, was: 169, coupon: 10, sold: '8000+' },
+};
+const DECOY = [
+  ['tee', 200, '纯棉圆领短袖T恤 基础百搭', 59, '2.1万', ['包邮', '7天无理由'], 1],
+  ['cup', 340, '316 不锈钢保温杯 大容量', 79, '5.6万', ['包邮'], 0],
+  ['phones', 260, '头戴式无线蓝牙耳机 降噪', 239, '9000+', ['以旧换新', '包邮'], 1],
+  ['snack', 32, '每日坚果混合装 30 小包', 89, '10万+', ['限时秒杀'], 0],
+  ['lipstick', 350, '丝绒哑光口红 显白日常色', 119, '3.4万', ['赠小样'], 1],
+  ['watch', 190, '简约石英手表 防水夜光', 169, '4000+', ['包邮', '运费险'], 0],
+  ['lamp', 45, '护眼台灯 宿舍书桌阅读', 99, '1.8万', ['包邮'], 1],
+  ['bag', 120, '大容量双肩包 电脑通勤', 139, '6000+', ['7天无理由'], 0],
+];
+const prod = p => PROD[p] || PROD['商品A'];
+const pa = (p, v) => art(prod(p).art, prod(p).hue, v);
+// 垫在下面的界面（半屏商详背后、规格面板背后）不能点
+const inert = html => html.replace(/ data-act="[^"]*"/g, '').replace(/ data-scroll/g, '');
 
+// ================= 各个页面 =================
+const sbar = dark => `<div class="sbar${dark ? ' dark' : ''}"><span>9:41</span><span>▮▮▮ 〜 ▭</span></div>`;
+const nav = (t, extra = '') => `${sbar()}<div class="nav"><span class="bk" data-act="back">‹</span><span class="ttl">${t}</span>${extra || '<span class="ic2">⋯</span>'}</div>`;
+const tags = ts => ts.map((t, i) => `<span class="tg${i ? ' g' : ''}">${t}</span>`).join('');
+
+function home(p) {
+  const P = prod(p);
+  const caseCard = `<div class="fcard" data-act="card"><div class="im">${pa(p)}</div><div class="tx"><div class="nm two2">${esc(P.name)}</div>
+      ${tags(['券后价', '包邮'])}<div><span class="price"><small>¥</small>${P.price - P.coupon}</span><span class="del">¥${P.was}</span> <span class="sold">已售${P.sold}</span></div></div></div>`;
+  const decoy = ([a, h, nm, pr, sold, tg, tall], i) => `<div class="fcard" data-act="x"><div class="im${tall ? ' tall' : ''}">${art(a, h, i % 2)}</div><div class="tx"><div class="nm two2">${nm}</div>
+      ${tags(tg)}<div><span class="price"><small>¥</small>${pr}</span> <span class="sold">已售${sold}</span></div></div></div>`;
+  const cards = DECOY.map(decoy); cards.unshift(caseCard);
+  return `${sbar()}<div class="scroll t26 b52" data-scroll>
+    <div class="search"><span>⌕</span><span>搜索你想要的商品</span><b>搜索</b></div>
+    <div class="ctabs"><span class="on">推荐</span><span>直播</span><span>服饰</span><span>美妆</span><span>数码</span><span>食品</span><span>家居</span></div>
+    <div class="banner"><h4>限时秒杀</h4><p>每天 10 点、20 点两场 · 示意活动</p><div class="bn">${art('shoe', 10, 0).replace('fill="hsl(10 55% 93%)"', 'fill="transparent"')}</div><div class="dots2"><i class="on"></i><i></i><i></i></div></div>
+    <div class="qgrid">${[['秒杀', '#fe2c55'], ['领券', '#ff8a00'], ['超市', '#00b578'], ['直播', '#7f3bf5'], ['新品', '#3370ff']].map(([t, c]) => `<div data-act="x"><i style="background:${c}">${t[0]}</i>${t}</div>`).join('')}</div>
+    <div class="livecard" data-act="live"><div class="lv2"><span class="on">直播中</span>${host(true)}</div>
+      <div style="flex:1;min-width:0"><div style="font-weight:600;font-size:13px">直播间 · 主播正在讲解</div><div class="faint" style="color:#8f959e">2.3万人在看 · 示意</div>
+      <div class="prow" style="margin-top:6px"><span class="thumb s">${pa(p)}</span><span class="thumb s">${art('tee', 200)}</span><span class="thumb s">${art('cup', 340)}</span></div></div></div>
+    <div class="feed">${cards.join('')}</div></div>
+    <div class="tabbar"><div class="on" data-act="x"><i></i>首页</div><div data-act="live"><i></i>直播</div><div data-act="x"><i></i>购物车</div><div data-act="x"><i></i>消息</div><div data-act="mine"><i></i>我的</div></div>`;
+}
+function host(small) {
+  return `<svg viewBox="0 0 100 130" style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:${small ? 80 : 210}px">
+    <ellipse cx="50" cy="128" rx="46" ry="30" fill="rgba(255,255,255,.14)"/><path d="M14 130c0-30 16-46 36-46s36 16 36 46z" fill="#e9d6c8" opacity=".9"/>
+    <path d="M20 130c2-24 14-38 30-38s28 14 30 38z" fill="#ff6a8a"/><circle cx="50" cy="56" r="22" fill="#f1dccd"/><path d="M27 54c0-18 10-28 23-28s24 10 24 28c-6-8-14-12-24-12s-17 4-23 12z" fill="#3a2a2a"/></svg>`;
+}
 function detailBody(p, o = {}) {
-  const n = o.img || 1;
-  return `<div class="hero${T(o.tap === 'hero')}" style="background:linear-gradient(135deg,hsl(${(HUE[p] || [210])[0]} 70% 62%),hsl(${(HUE[p] || [0, 240])[1]} 65% 46%))">${esc((p || '商品').slice(-1))}
-      <span class="idx">${n}/5</span><div class="dots">${[1, 2, 3, 4, 5].map(i => `<i class="${i === n ? 'on' : ''}"></i>`).join('')}</div></div>
-    <div class="card2" style="margin-top:-8px;position:relative"><div class="price">¥ ···<span class="pm">价格已隐去</span></div>
-      <div style="font-weight:600;margin-top:2px">${esc(p)} · 商品名已隐去</div><div class="faint">包邮 · 7 天无理由退货</div></div>
-    <div class="row2"><span class="k">已选</span><span class="v">请选择规格</span><span>›</span></div>
-    <div class="row2${T(o.tap === 'review')}"><span class="k">评价</span><span class="v">用户评价</span><span class="faint">查看全部 ›</span></div>
-    <div class="card2">${lines(3)}</div>`;
+  const P = prod(p), n = o.img || 1;
+  return `<div class="hero" data-act="hero">${pa(p, n - 1)}<span class="idx">${n}/5</span>
+      <div class="thumbs">${[0, 1, 2].map(i => `<span class="${i === n - 1 ? 'on' : ''}">${pa(p, i)}</span>`).join('')}</div></div>
+    <div class="pbar"><div><div style="font-size:11px">券后价</div><div class="p"><small>¥</small>${P.price - P.coupon}</div></div><div class="o">¥${P.was}</div><div class="r">已售 ${P.sold}<br>限时直降</div></div>
+    <div class="blk" style="margin-top:0;border-radius:0 0 12px 12px"><div class="ttl2">${esc(P.name)}</div>${tags(['包邮', '7天无理由', '极速退款'])}</div>
+    <div class="blk"><div class="row2"><span class="k">优惠</span><span class="v"><span class="tg f">券</span>满 ${P.price} 减 ${P.coupon} · 店铺新人券</span><span class="ar">领取 ›</span></div>
+      <div class="row2" data-act="spec"><span class="k">已选</span><span class="v">${o.spec ? '款式二，M，1 件' : '请选择 颜色分类 尺码'}</span><span class="ar">›</span></div>
+      <div class="row2"><span class="k">发货</span><span class="v">48 小时内发货 · 快递包邮</span></div>
+      <div class="row2"><span class="k">保障</span><span class="v">7 天无理由 · 退货运费险 · 假一赔四</span></div></div>
+    <div class="blk" data-act="review"><div class="row2" style="padding-top:0"><b style="flex:1">用户评价（2386）</b><span class="ar">好评率 97% ›</span></div>
+      <div class="rtags" style="margin:6px 0"><span>质量很好 268</span><span>尺码标准 154</span><span class="g">物流快 97</span></div>
+      <div class="rv"><div class="who"><span class="avt" style="background:#ffd2a8"></span>用户***9 <span class="stars">★★★★★</span></div><div>做工不错，和图片一样，穿着很舒服。</div></div>
+      <div class="rv"><div class="who"><span class="avt" style="background:#c8dcff"></span>用户***2 <span class="stars">★★★★☆</span></div><div>颜色正，物流挺快，尺码偏大半码。</div></div></div>
+    <div class="blk shop"><div class="lg2">店</div><div style="flex:1"><b>示意旗舰店</b><div class="sold">店铺评分 4.8 · 粉丝 12 万</div></div><span class="btn2 red">进店</span></div>
+    <div class="blk"><b>商品详情</b><div style="margin-top:8px;border-radius:8px;overflow:hidden;aspect-ratio:1/1">${pa(p, 1)}</div></div>`;
 }
-const buyBar = tap => `<div class="bbar"><div class="ic"><b></b>店铺</div><div class="ic"><b></b>客服</div>
-  <div class="pill cart">加入购物车</div><div class="pill buy${T(tap === 'buy')}">立即购买</div></div>`;
+const buyBar = p => `<div class="bbar"><div class="ic"><i></i>店铺</div><div class="ic"><i></i>客服</div><div class="ic"><i></i>收藏</div>
+  <div class="pill cart" data-act="x">加入购物车</div><div class="pill buy" data-act="buy spec">立即购买<small>券后 ¥${prod(p).price - prod(p).coupon}</small></div></div>`;
 function detail(p, o = {}) {
-  if (o.half) return `<div class="half-top">${sbar(1)}<div style="height:30px"></div>${lines(4)}</div>
-    <div class="half"><div style="height:6px;width:40px;border-radius:3px;background:#ccc;margin:6px auto"></div>${detailBody(p, o)}</div>${buyBar(o.tap)}`;
-  return `${nav('商品详情', o.tap === 'back')}<div class="body${o.leave ? ' leaving' : ''}">${detailBody(p, o)}</div>${buyBar(o.tap)}`;
+  if (o.half) return `<div class="dimtop">${inert(o.from === 'live' ? live(p, true) : home(p))}</div>
+    <div class="half"><div class="grab" data-act="expand"><i></i><span data-act="back" style="position:absolute;right:10px;top:0;font-size:15px;color:#999;padding:0 4px">✕</span></div><div class="scroll" style="top:22px;bottom:56px" data-scroll>${detailBody(p, o)}</div></div>${buyBar(p)}`;
+  return `${nav('', '<span class="ic2">⌕</span><span class="ic2">⇪</span>')}<div class="scroll t68 b56${o.leave ? ' leaving' : ''}" data-scroll>${detailBody(p, o)}</div>${buyBar(p)}`;
 }
-function live(p, o = {}) {
-  return `<div class="live">${sbar(1)}<div class="tagl"><span class="av"></span><span>直播间</span><span class="onair">直播中</span></div>
-    <div class="host"></div><div class="cmts"><span style="width:150px"></span><span style="width:110px"></span><span style="width:170px"></span></div>
-    <div class="pop${T(o.tap === 'pop')}">${tile(p)}<div><div style="font-weight:600">${esc(p)}</div><div class="price" style="font-size:12px">¥ ···</div><div class="faint">讲解中</div></div><span class="go">去购买</span></div>
-    <div class="cartbtn">购</div></div>`;
+function live(p, bare) {
+  const P = prod(p);
+  return `<div class="live">${sbar(1)}<div class="hd"><div class="anc"><span class="avt" style="background:#f1dccd"></span><div><b>示意主播</b><small>本场点赞 8.6万</small></div><span class="fl">关注</span></div><span class="vw">2.3万人</span><span style="font-size:18px">✕</span></div>
+    <div class="stage">${host()}</div>
+    <div class="cmts"><span><b>用户***6</b>有大码吗？</span><span><b>用户***1</b>已拍，期待</span><span><b>用户***8</b>主播试一下另一个颜色</span><span><b>用户***3</b>来了来了</span></div>
+    ${bare ? '' : `<div class="pop" data-act="live"><span class="no">讲解中</span><span class="thumb">${pa(p)}</span><div style="min-width:0"><div class="two2" style="font-weight:600">${esc(P.name)}</div>
+      <div><span class="price"><small>¥</small>${P.price - P.coupon}</span> <span class="sold">已售${P.sold}</span></div></div><span class="go" data-act="buy spec">去购买</span></div>`}
+    <div class="ft"><div class="say">说点什么…</div><div class="bag" data-act="live">购<em>12</em></div><div class="heart">♥</div></div></div>`;
 }
 function sku(base, p, o = {}) {
-  const col = ['款式一', '款式二', '款式三'], size = ['S', 'M', 'L', 'XL'];
-  return `${base}<div class="mask"></div><div class="sheet">
-    <div class="prow">${tile(p)}<div><div class="price">¥ ···<span class="pm">价格已隐去</span></div><div class="faint">已选：${o.col != null ? col[o.col] + ' ' + size[o.size ?? 1] : '请选择'}</div></div></div>
-    <div class="grp">颜色分类</div><div class="chips2">${col.map((c, i) => `<span class="${i === o.col ? 'on' : ''}${T(o.tap === 'col' && i === o.col)}">${c}</span>`).join('')}</div>
-    <div class="grp">尺码</div><div class="chips2">${size.map((c, i) => `<span class="${o.col != null && i === (o.size ?? 1) ? 'on' : ''}">${c}</span>`).join('')}</div>
-    <div class="grp">数量</div><div class="chips2"><span>－</span><span>1</span><span>＋</span></div>
-    <div class="ok2${T(o.tap === 'ok')}">确定</div></div>`;
+  const P = prod(p), col = ['款式一', '款式二', '款式三', '款式四'], size = ['S', 'M', 'L', 'XL', 'XXL'];
+  const c = o.col;
+  return `${inert(base)}<div class="mask" data-act="x"></div><div class="sheet"><span class="x" data-act="close">✕</span>
+    <div class="prow"><span class="thumb">${pa(p, c ?? 0)}</span><div><div class="price lg"><small>¥</small>${P.price - P.coupon}<span class="del">¥${P.was}</span></div>
+      <div class="sold">库存充足 · 48 小时内发货</div><div style="margin-top:2px">${c != null ? '已选：' + col[c] + '，' + size[1] : '请选择 颜色分类 尺码'}</div></div></div>
+    <div class="grp">颜色分类</div><div class="opts">${col.map((t, i) => `<span class="opt${i === c ? ' on' : ''}${i === 3 ? ' dis' : ''}" ${i !== c && i !== 3 ? 'data-act="col"' : ''}><span class="thumb">${pa(p, i)}</span>${t}</span>`).join('')}</div>
+    <div class="grp">尺码</div><div class="opts">${size.map((t, i) => `<span class="opt${c != null && i === 1 ? ' on' : ''}">${t}</span>`).join('')}</div>
+    <div class="qty">购买数量 <span>－　1　＋</span></div>
+    <div class="ok2" data-act="ok buy">确定</div></div>`;
 }
 function checkout(p, o = {}) {
-  return `${nav('确认订单', o.tap === 'back')}<div class="body">
-    <div class="card2"><div style="font-weight:600">收货地址</div><div class="faint">已隐去</div></div>
-    <div class="card2"><div class="prow">${tile(p || '商品A')}<div style="flex:1"><div style="font-weight:600">${esc(p || '商品')}</div><div class="faint">${o.spec ? '已选规格' : '规格：待确认'} · ×1</div></div></div>
-      <div class="row2${T(o.tap === 'spec')}" style="padding:8px 0;margin-top:6px"><span class="k">规格</span><span class="v">${o.spec ? '已选择' : '请选择'}</span><span>›</span></div>
-      <div class="row2" style="padding:8px 0"><span class="k">优惠</span><span class="v faint">—</span></div>
-      <div class="row2" style="padding:8px 0;border:0"><span class="k">运费</span><span class="v">包邮</span></div></div></div>
-    <div class="subbar"><span>合计 <span class="price">¥ ···</span></span><div class="pill buy${T(o.tap === 'submit')}">提交订单</div></div>
-    ${o.done ? `<div class="mask"></div><div class="modal"><div class="okc">✓</div><b>订单提交成功</b><div class="faint">正在前往支付</div></div>` : ''}`;
+  const P = prod(p), pay = P.price - P.coupon;
+  return `${nav('确认订单', '<span class="ic2"></span>')}<div class="scroll t68 b56" data-scroll>
+    <div class="blk addr"><i>址</i><div style="flex:1"><b>收货人 · 已隐去</b><div class="sold">收货地址已隐去</div></div><span class="ar">›</span></div>
+    <div class="blk"><div class="sold">示意旗舰店</div><div class="prow" style="margin-top:6px"><span class="thumb">${pa(p)}</span><div style="flex:1;min-width:0"><div class="two2">${esc(P.name)}</div>
+      <div class="sold">${o.spec ? '款式二，M' : '规格待确认'}</div><div class="prow" style="justify-content:space-between"><span class="price">¥${pay}</span><span>×1</span></div></div></div>
+      <div class="row2" data-act="spec" style="margin-top:6px"><span class="k">规格</span><span class="v">${o.spec ? '款式二，M' : '请选择'}</span><span class="ar">›</span></div>
+      <div class="row2"><span class="k">配送</span><span class="v">快递 · 免运费</span></div>
+      <div class="row2"><span class="k">优惠</span><span class="v">店铺券</span><span class="price">-¥${P.coupon}</span></div>
+      <div class="row2"><span class="k">保障</span><span class="v">退货运费险 · 商家赠送</span></div>
+      <div class="row2"><span class="k">备注</span><span class="v sold">选填</span></div></div>
+    <div class="blk"><b>支付方式</b><div class="row2"><span class="v">在线支付（示意）</span><span class="radio on"></span></div><div class="row2"><span class="v">先用后付（示意）</span><span class="radio"></span></div></div>
+    <div class="blk"><div class="row2"><span class="v">商品金额</span><span>¥${P.price}</span></div><div class="row2"><span class="v">店铺优惠</span><span class="price">-¥${P.coupon}</span></div><div class="row2"><span class="v">运费</span><span>¥0</span></div></div></div>
+    <div class="subbar"><span>合计 <span class="price lg"><small>¥</small>${pay}</span></span><div class="pill buy" data-act="submit pay">提交订单</div></div>
+    ${o.done ? `<div class="mask" data-act="x" style="top:68px"></div><div class="modal"><div class="okc">✓</div><b style="font-size:15px">订单提交成功</b><div class="sold">请在 15 分钟内完成支付</div><div class="price lg" style="margin-top:6px"><small>¥</small>${pay}</div><div class="pill buy" data-act="pay">去支付</div></div>` : ''}`;
 }
-function reviews(p, o = {}) {
-  const r = () => `<div class="card2"><div class="prow"><span style="width:26px;height:26px;border-radius:50%;background:#e6e7ea;display:block"></span><div class="bline w40" style="flex:1"></div></div>${lines(2, ['', 'w80'])}
-    <div style="display:flex;gap:6px;margin-top:6px"><span style="width:60px;height:60px;border-radius:6px;background:#e6e7ea"></span><span style="width:60px;height:60px;border-radius:6px;background:#e6e7ea"></span></div></div>`;
-  return `${nav('商品评价')}<div class="body nobar"><div class="card2"><div class="chips2"><span class="on">全部</span><span>有图</span><span>追评</span><span>差评</span></div></div>${r()}${r()}${r()}</div>`;
+function reviews(p) {
+  const r = (n, t, s, pics) => `<div class="blk"><div class="who" style="display:flex;gap:6px;align-items:center;color:#646a73"><span class="avt" style="background:hsl(${n * 60} 60% 85%)"></span>用户***${n}<span class="stars">${s}</span><span class="sold" style="margin-left:auto">款式二 · M</span></div>
+    <div style="margin-top:4px">${t}</div>${pics ? `<div class="pics">${[0, 1, 2].slice(0, pics).map(i => `<span>${pa(p, i)}</span>`).join('')}</div>` : ''}</div>`;
+  return `${nav('商品评价')}<div class="scroll t68 b0" data-scroll>
+    <div class="blk"><div class="prow"><div style="text-align:center"><div class="price lg" style="color:#ff8a00">4.8</div><span class="stars">★★★★★</span></div><div style="flex:1"><b>好评率 97%</b><div class="sold">共 2386 条评价 · 示意数据</div></div></div>
+      <div class="rtags" style="margin-top:8px"><span>全部</span><span class="g">有图 412</span><span class="g">追评 86</span><span class="g">质量很好 268</span><span class="g">尺码标准 154</span><span class="g">偏大 41</span><span class="g">差评 23</span></div></div>
+    ${r(9, '做工不错，和图片一样，穿着很舒服，已经推荐给朋友。', '★★★★★', 3)}${r(2, '颜色正，物流挺快，尺码偏大半码，建议拍小一码。', '★★★★☆', 2)}
+    ${r(5, '第二次回购了，性价比可以。', '★★★★★', 0)}${r(7, '鞋底有点硬，走久了脚累，其他还行。', '★★★☆☆', 1)}</div>`;
 }
-function orders(o = {}) {
-  const card = p => `<div class="card2"><div class="faint">店铺 · 已隐去</div><div class="prow" style="margin-top:6px">${tile(p)}<div style="flex:1">${lines(2, ['w80', 'w40'])}</div></div></div>`;
-  return `${nav('我的订单')}<div class="body nobar"><div class="card2"><div class="chips2"><span class="on">全部</span><span>待支付</span><span>待发货</span><span>待收货</span></div></div>${card('商品A')}${card('商品C')}</div>`;
+function orders(p) {
+  const card = (q, st, btns) => `<div class="blk"><div class="prow" style="justify-content:space-between"><span class="sold">示意旗舰店 ›</span><span style="color:#fe2c55">${st}</span></div>
+    <div class="prow" style="margin-top:6px"><span class="thumb">${pa(q)}</span><div style="flex:1;min-width:0"><div class="two2">${esc(prod(q).name)}</div><div class="sold">款式二，M · ×1</div></div></div>
+    <div style="text-align:right;margin-top:8px;display:flex;gap:6px;justify-content:flex-end">${btns}</div></div>`;
+  return `${nav('我的订单', '<span class="ic2">⌕</span>')}<div class="scroll t68 b0" data-scroll>
+    <div class="ctabs" style="background:#fff;padding:10px 12px"><span class="on">全部</span><span>待支付</span><span>待发货</span><span>待收货</span><span>售后</span></div>
+    ${card(p, '待支付', `<span class="btn2" data-act="x">取消订单</span><span class="btn2 red" data-act="buy">去支付</span>`)}
+    ${card('商品C', '已完成', `<span class="btn2" data-act="x">查看物流</span><span class="btn2 red" data-act="x">再次购买</span>`)}
+    ${card('商品B', '已完成', `<span class="btn2" data-act="x">评价</span>`)}</div>`;
 }
-function paid() {
-  return `${nav('支付结果')}<div class="body nobar" style="background:#fff;text-align:center;padding-top:80px">
-    <div class="okc" style="width:70px;height:70px;font-size:36px">✓</div><div style="font-size:18px;font-weight:600">支付成功</div><div class="faint">金额已隐去</div>
-    <div style="display:flex;gap:10px;justify-content:center;margin-top:24px"><span class="btn">查看订单</span><span class="btn">继续逛逛</span></div></div>`;
+function paid(p) {
+  const P = prod(p);
+  return `${nav('支付结果', '<span class="ic2"></span>')}<div class="scroll t68 b0" data-scroll><div class="blk" style="text-align:center;padding:30px 12px">
+    <div class="okc" style="width:70px;height:70px;font-size:36px">✓</div><div style="font-size:18px;font-weight:700">支付成功</div><div class="price lg" style="margin-top:4px"><small>¥</small>${P.price - P.coupon}</div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:18px"><span class="btn2" data-act="vieworder" style="padding:6px 18px">查看订单</span><span class="btn2 red" data-act="x" style="padding:6px 18px">继续逛逛</span></div></div>
+    <div class="blk"><b>猜你喜欢</b><div class="feed" style="padding:8px 0 0">${DECOY.slice(0, 4).map(([a, h, nm, pr], i) => `<div class="fcard" style="border:1px solid #f0f0f0"><div class="im">${art(a, h, i % 2)}</div><div class="tx"><div class="nm two2">${nm}</div><span class="price">¥${pr}</span></div></div>`).join('')}</div></div></div>`;
 }
 function orderDetail(p) {
-  return `${nav('订单详情')}<div class="body nobar"><div class="card2" style="background:#fe2c55;color:#fff"><b>待发货</b><div style="font-size:12px;opacity:.85">商家正在备货</div></div>
-    <div class="card2"><div class="prow">${tile(p || '商品A')}<div style="flex:1"><b>${esc(p || '商品')}</b>${lines(1, ['w60'])}</div></div></div>
-    <div class="card2"><div class="row2" style="padding:6px 0"><span class="k">订单号</span><span class="v faint">已隐去</span></div><div class="row2" style="padding:6px 0;border:0"><span class="k">物流</span><span class="v">暂无物流信息</span></div></div></div>`;
+  const P = prod(p);
+  return `${nav('订单详情')}<div class="scroll t68 b0" data-scroll><div class="stat"><b>待发货</b><p>商家正在备货，预计 48 小时内发货</p>
+    <div class="steps3"><span class="on">已下单</span><span class="on">已支付</span><span>已发货</span><span>已签收</span></div></div>
+    <div class="blk" style="margin-top:-14px"><div class="addr"><i>址</i><div><b>收货人 · 已隐去</b><div class="sold">收货地址已隐去</div></div></div></div>
+    <div class="blk"><div class="prow"><span class="thumb">${pa(p)}</span><div style="flex:1;min-width:0"><div class="two2">${esc(P.name)}</div><div class="sold">款式二，M · ×1</div></div></div>
+      <div class="row2" style="margin-top:6px"><span class="v">实付款</span><span class="price">¥${P.price - P.coupon}</span></div>
+      <div style="display:flex;gap:6px;justify-content:flex-end"><span class="btn2" data-act="x">修改地址</span><span class="btn2" data-act="x">申请退款</span><span class="btn2 red" data-act="x">联系客服</span></div></div>
+    <div class="blk"><div class="row2"><span class="v sold">订单编号</span><span>已隐去</span></div><div class="row2"><span class="v sold">支付方式</span><span>在线支付（示意）</span></div></div></div>`;
 }
 
-// 每一步：画哪个界面、点了哪里、提示什么
+// ================= 每一步：用户看到的界面 =================
 function screenFor(c, k) {
   const s = c.steps[k], p = s.商品 || c.steps.find(x => x.商品)?.商品 || '商品A', a = s.动作;
   const prev = c.steps.slice(0, k).reverse();
   const basePage = (prev.find(x => x.页面 !== '电商SKU面板') || {}).页面;
-  const fullSeen = prev.some(x => x.动作.includes('上滑到全屏')) || prev.some(x => x.页面 === '提单页' || x.页面 === '直播间');
-  let html = '', extra = '';
+  const full = prev.some(x => x.动作.includes('上滑到全屏') || x.页面 === '提单页' || x.页面 === '直播间');
+  const from = prev[0]?.页面 === '直播间' ? 'live' : 'home';
+  const spec = prev.some(x => x.动作 === '完成规格选择') || a === '完成规格选择';
   switch (s.页面) {
-    case '订单列表': html = orders(); break;
-    case '直播间': html = live(p, { tap: 'pop' }); break;
+    case '订单列表': return orders(p);
+    case '直播间': return live(p);
     case '商品详情Native':
-      if (a.startsWith('进入商品详情')) html = detail(p, { half: true });
-      else if (a.includes('上滑到全屏')) { html = detail(p, {}); extra = `<div class="swipe v" style="left:155px;top:330px">↑</div>`; }
-      else if (a.includes('点击该商品')) html = detail(p, { tap: 'hero', half: !fullSeen });
-      else if (a.includes('主图')) { html = detail(p, { img: 2, half: !fullSeen }); extra = `<div class="swipe" style="left:150px;top:${fullSeen ? 200 : 260}px">‹</div>`; }
-      else if (a.includes('评价页')) html = reviews(p);
-      else if (a.includes('离开')) html = detail(p, { tap: 'back', leave: true });
-      else html = detail(p, {});
-      break;
+      if (a.startsWith('进入商品详情')) return detail(p, { half: true, from });
+      if (a.includes('上滑到全屏')) return detail(p, {});
+      if (a.includes('点击该商品')) return detail(p, { half: !full, from, spec });
+      if (a.includes('主图')) return detail(p, { img: 2, half: !full, from });
+      if (a.includes('评价页')) return reviews(p);
+      if (a.includes('离开')) return detail(p, { leave: true, half: false });
+      return detail(p, {});
     case '电商SKU面板': {
-      const base = basePage === '直播间' ? live(p) : basePage === '提单页' ? checkout(p) : detail(p, {});
-      const doneSel = a.includes('完成'), pick = a.includes('选择规格项'), sw = a.includes('切换');
-      html = sku(base, p, { col: sw ? 2 : pick || doneSel ? 1 : null, tap: doneSel ? 'ok' : pick || sw ? 'col' : null });
-      break;
+      const base = basePage === '直播间' ? live(p) : basePage === '提单页' ? checkout(p, { spec }) : detail(p, { spec });
+      const opened = prev.filter(x => x.页面 === '电商SKU面板' && x.商品 === s.商品 && x.动作 !== '打开规格面板').length;
+      const col = a.includes('切换') ? 2 : a.includes('选择规格项') || a.includes('完成') || opened ? 1 : null;
+      return sku(base, p, { col });
     }
-    case '提单页': {
-      const spec = prev.some(x => x.动作 === '完成规格选择');
-      if (a.includes('提交订单成功')) html = checkout(p, { spec: true, done: true });
-      else if (a.includes('提交订单')) html = checkout(p, { spec, tap: 'submit' });
-      else if (a.includes('返回')) html = checkout(p, { spec, tap: 'back' });
-      else html = checkout(p, { spec });
-      break;
-    }
-    case '支付成功页': html = paid(); break;
-    case '订单详情': html = orderDetail(s.商品); break;
-    default: html = detail(p, {});
+    case '提单页':
+      if (a.includes('提交订单成功')) return checkout(p, { spec: true, done: true });
+      return checkout(p, { spec });
+    case '支付成功页': return paid(p);
+    case '订单详情': return orderDetail(s.商品 || p);
+    default: return detail(p, {});
   }
-  const meta = [s.重复 > 1 ? `×${s.重复}` : '', s.停留 ? `停留 ${s.停留} 秒` : ''].filter(Boolean).join(' · ');
-  return html + extra + `<div class="toast"><b>#${k + 1}</b><span>${esc(a)}${meta ? ` <span style="opacity:.7">${meta}</span>` : ''}</span></div>`;
 }
 
-// ---------- 页面逻辑 ----------
+// 下一步真实动作对应界面上的哪个元素（data-act）
+function targetKey(a) {
+  if (a === '查看订单列表') return 'mine';
+  if (a.startsWith('进入商品详情')) return 'card';
+  if (a.includes('上滑到全屏')) return 'expand';
+  if (a.includes('点击该商品') || a.includes('主图')) return 'hero';
+  if (a.includes('评价页')) return 'review';
+  if (a.includes('离开商品详情') || a.includes('从提单页返回')) return 'back';
+  if (a.includes('直播间')) return 'live';
+  if (a === '打开规格面板') return 'spec';
+  if (a.includes('选择规格项') || a.includes('切换规格')) return 'col';
+  if (a === '完成规格选择') return 'ok';
+  if (a === '进入提单页') return 'buy';
+  if (a.includes('提交订单')) return 'submit';
+  if (a === '支付成功') return 'pay';
+  if (a === '查看订单详情') return 'vieworder';
+  return null;
+}
+// 规格面板盖住了原页面时，用面板里最接近的入口代替
+const ALIAS = { spec: ['spec', 'col'], ok: ['ok', 'spec'], col: ['col', 'spec'], submit: ['submit', 'ok'], back: ['back', 'close'] };
+const VERB = { mine: '点「我的」', card: '点这个商品', expand: '上滑看全屏', hero: '看主图', review: '看评价', back: '返回', live: '去直播间', spec: '选规格', col: '选一个款式', ok: '点确定', buy: '去购买', submit: '提交订单', pay: '去支付', vieworder: '查看订单' };
+
+function attachTarget(c) {
+  const scr = $('screen'); target = null;
+  scr.querySelectorAll('.nextbub, .fallback, .cutbox').forEach(e => e.remove());
+  scr.querySelectorAll('.next').forEach(e => e.classList.remove('next', 'bigt'));
+  if (sel >= 0 && sel !== shown - 1) return;
+  if (shown >= c.steps.length) {
+    const j = c.judgments[shown - 1], nx = j.out?.下一步预测 || [], hit = j.hit || {};
+    scr.insertAdjacentHTML('beforeend', `<div class="cutbox"><div class="hd2">回放到截点</div>
+      <div>模型预测下一步：<b>${esc(nx[0] || '—')}</b>${nx[1] ? `<span class="sold">（其次 ${esc(nx.slice(1).join('、'))}）</span>` : ''}</div>
+      <div>用户真实下一步：<b>${esc(c.next_action)}</b> ${hit.top1 ? '<span class="chip ok">命中</span>' : hit.top3 ? '<span class="chip warn">在前三</span>' : '<span class="chip bad">未命中</span>'}</div>
+      <div class="sold">截点后当天${c.buy_day ? '下单了' : '没有下单'}</div></div>`);
+    return;
+  }
+  const ns = c.steps[shown], key = targetKey(ns.动作), acts = [...scr.querySelectorAll('[data-act]')];
+  let el = null;
+  for (const k of ALIAS[key] || [key]) {
+    el = acts.find(e => e.dataset.act.split(' ').includes(k) && e.offsetParent !== null);
+    if (el) break;
+  }
+  if (el) {
+    el.classList.add('next');
+    const box = el.closest('[data-scroll]');
+    if (box) {  // 只在看不全时滚动，尽量少滚
+      const r = el.getBoundingClientRect(), b = box.getBoundingClientRect(), h = Math.min(r.height, b.height - 40);
+      if (r.top < b.top + 20) box.scrollTop -= b.top + 20 - r.top;
+      else if (r.top + h > b.bottom - 20) box.scrollTop += r.top + h - (b.bottom - 20);
+    }
+    placeBubble(el, VERB[key]);
+    target = el;
+  } else {
+    scr.insertAdjacentHTML('beforeend', `<div class="fallback" data-act="__next">用户接下来：${esc(ns.动作)} ›<small>界面里没有对应入口，点这里继续</small></div>`);
+    target = scr.querySelector('.fallback');
+  }
+}
+function placeBubble(el, text) {
+  // 气泡挂在目标元素里，随元素一起滚动、一起做上滑动画，不需要量位置
+  const big = el.offsetHeight > 120, r = el.getBoundingClientRect(), s = $('screen').getBoundingClientRect();
+  if (big) el.classList.add('bigt');
+  const b = document.createElement('div');
+  b.className = 'nextbub ' + (big ? 'in' : 'up' + (r.left + r.width / 2 > s.right - 60 ? ' r' : ''));
+  b.innerHTML = `<span>${text} 👆</span>`;
+  el.appendChild(b);
+}
+function hint(text) {
+  const scr = $('screen'); scr.querySelector('.hintmsg')?.remove();
+  scr.insertAdjacentHTML('beforeend', `<div class="hintmsg">${text}</div>`);
+  const h = scr.querySelector('.hintmsg'); setTimeout(() => h && h.remove(), 1800);
+}
+function ripple(el) {
+  const scr = $('screen'), r = el.getBoundingClientRect(), s = scr.getBoundingClientRect();
+  scr.insertAdjacentHTML('beforeend', `<div class="ripple" style="left:${r.left - s.left + r.width / 2}px;top:${r.top - s.top + Math.min(r.height, 80) / 2}px"></div>`);
+  el.classList.add('press');
+  return new Promise(res => setTimeout(res, 420));
+}
+$('screen').addEventListener('click', e => {
+  const el = e.target.closest('[data-act]');
+  if (!el || busy) return;
+  const c = C[cur];
+  if (target && (el === target || target.contains(el))) { stopAuto(); ripple(target).then(step); return; }
+  if (sel >= 0 && sel !== shown - 1) return hint('正在查看历史步骤<br>点轨迹里的最新一步再继续');
+  if (shown >= c.steps.length) return hint('已经回放到截点<br>可以换一个案例或重新开始');
+  hint(`回放沿着用户的真实路径走<br>这位用户下一步是「${esc(c.steps[shown].动作)}」`);
+});
+
+// ================= 页面逻辑 =================
 function renderList() {
   $('clist').innerHTML = C.map((c, i) => `<button class="citem${i === cur ? ' sel' : ''}" data-i="${i}">
     <div><span class="cgrp">${esc(c.group)}</span><span class="cgrp dim">${esc(c.kind)}</span><span class="faint">案例${c.no} · ${c.steps.length} 步</span></div>
@@ -376,9 +628,14 @@ function step() {
 }
 async function auto() {
   if (timer) return stopAuto();
-  timer = true; $('bAuto').textContent = '暂停';
-  while (timer && !done()) { await step(); await new Promise(r => setTimeout(r, 900)); }
-  stopAuto();
+  const t = timer = {}; $('bAuto').textContent = '暂停';
+  while (timer === t && !done()) {
+    await new Promise(r => setTimeout(r, 700));
+    if (timer !== t) break;
+    if (target) await ripple(target);
+    await step();
+  }
+  if (timer === t) stopAuto();
 }
 function stopAuto() { timer = null; $('bAuto').textContent = '自动回放到截点'; }
 
@@ -387,13 +644,20 @@ function render(thinking) {
   $('prog').textContent = `${shown}/${n} 步`;
   $('bStep').disabled = busy || done();
   $('bReset').disabled = busy || !shown;
-  $('screen').innerHTML = shown ? screenFor(c, k)
-    : `<div class="idle"><div><div style="font-weight:600;color:#1f2329;margin-bottom:8px">案例${c.no} · ${esc(c.group)}</div>${esc(c.title)}<br><br>点「回放下一步」，按真实顺序重放这位用户在购物 App 里的操作。</div></div>`;
-  $('cap').innerHTML = shown ? `<span class="muted">${esc(c.steps[k].页面)}</span> · ${esc(c.steps[k].动作)}${k !== shown - 1 ? ' <span class="chip">查看历史步骤</span>' : ''}` : '';
+  $('screen').innerHTML = shown ? screenFor(c, k) : home(c.steps.find(x => x.商品)?.商品 || '商品A');
+  if (shown) {
+    const s = c.steps[k], meta = [s.重复 > 1 ? `重复 ${s.重复} 次` : '', s.停留 ? `停留 ${s.停留} 秒` : ''].filter(Boolean).join(' · ');
+    $('cap').innerHTML = `<div class="act"><b>#${k + 1}</b>${esc(s.动作)}</div><div class="sub">${esc(s.页面)}${meta ? ' · ' + meta : ''}${k !== shown - 1 ? ' · 正在查看历史步骤' : ''}</div>`;
+  } else {
+    $('cap').innerHTML = `<div class="act"><b>开始</b>${esc(c.title)}</div><div class="sub">点手机里高亮的位置，或点「回放下一步」，沿着用户的真实操作往下走</div>`;
+  }
   $('trail').innerHTML = shown ? c.steps.slice(0, shown).map((s, i) => `<div class="ti${i === k ? ' sel' : ''}" data-k="${i}"><span class="n">#${i + 1}</span><span>${esc(s.动作)}${s.重复 > 1 ? ` <span class="faint">×${s.重复}</span>` : ''}</span>
       ${!(thinking && i === shown - 1) ? band(c.judgments[i].out?.购买意愿?.档位, 'sm') : ''}</div>`).join('') : '<div class="faint">还没有回放。</div>';
   document.querySelectorAll('.trail .ti').forEach(e => e.onclick = () => { sel = +e.dataset.k; render(busy); });
   renderRight(thinking);
+  // 等规格面板、半屏商详的上滑动画结束再定位要点的元素
+  clearTimeout(attachT); target = null;
+  if (!thinking) attachT = setTimeout(() => attachTarget(c), 330);
 }
 
 function renderRight(thinking) {
@@ -450,7 +714,7 @@ function ladder(c, k, thinking) {
 }
 function bindLadder() { document.querySelectorAll('.stp').forEach(b => b.onclick = () => { sel = +b.dataset.k; render(busy); }); }
 
-$('bStep').onclick = () => { stopAuto(); step(); };
+$('bStep').onclick = () => { stopAuto(); if (target && !busy) ripple(target).then(step); else step(); };
 $('bAuto').onclick = auto;
 $('bReset').onclick = () => load(cur);
 // #3 打开案例 3；#3-5 直接停在案例 3 的第 5 步
