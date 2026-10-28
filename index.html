@@ -164,6 +164,11 @@ body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.6 -app
 .mask { position: absolute; inset: 0; background: rgba(0,0,0,.5); z-index: 4; }
 .sheet { position: absolute; left: 0; right: 0; bottom: 0; background: #fff; border-radius: 16px 16px 0 0; padding: 14px 14px 66px; z-index: 5; animation: up .3s ease; }
 @keyframes up { from { transform: translateY(100%); } to { transform: none; } }
+.sheet.stay, .half.stay { animation: none; }
+.opt.chg { animation: chg .7s ease; }
+@keyframes chg { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(254,44,85,.5); } 40% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(254,44,85,.15); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(254,44,85,0); } }
+.okdone { background: #2ea121 !important; }
+.selnote { color: #fe2c55; font-size: 11px; }
 .sheet .x { position: absolute; right: 14px; top: 10px; color: #999; font-size: 18px; }
 .sheet .grp { margin-top: 12px; color: #1f2329; font-weight: 600; font-size: 13px; }
 .opts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
@@ -312,7 +317,7 @@ const C = window.CASES || [];
 const BAND = { '低': 'b0', '中': 'b1', '高': 'b2', '很高': 'b3', '已下单': 'bok' };
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const $ = id => document.getElementById(id);
-let cur = 0, shown = 0, sel = -1, busy = false, timer = null, target = null, attachT = null;
+let cur = 0, shown = 0, sel = -1, busy = false, timer = null, target = null, attachT = null, screenKey = '';
 
 function band(b, cls) { return `<span class="band ${BAND[b] || 'b0'}${cls ? ' ' + cls : ''}">${esc(b || '—')}</span>`; }
 
@@ -389,7 +394,7 @@ function detailBody(p, o = {}) {
     <div class="pbar"><div><div style="font-size:11px">券后价</div><div class="p"><small>¥</small>${P.price - P.coupon}</div></div><div class="o">¥${P.was}</div><div class="r">已售 ${P.sold}<br>限时直降</div></div>
     <div class="blk" style="margin-top:0;border-radius:0 0 12px 12px"><div class="ttl2">${esc(P.name)}</div>${tags(['包邮', '7天无理由', '极速退款'])}</div>
     <div class="blk"><div class="row2"><span class="k">优惠</span><span class="v"><span class="tg f">券</span>满 ${P.price} 减 ${P.coupon} · 店铺新人券</span><span class="ar">领取 ›</span></div>
-      <div class="row2" data-act="spec"><span class="k">已选</span><span class="v">${o.spec ? '款式二，M，1 件' : '请选择 颜色分类 尺码'}</span><span class="ar">›</span></div>
+      <div class="row2" data-act="spec"><span class="k">已选</span><span class="v">${o.spec ? o.spec + '，1 件' : '请选择 颜色分类 尺码'}</span><span class="ar">›</span></div>
       <div class="row2"><span class="k">发货</span><span class="v">48 小时内发货 · 快递包邮</span></div>
       <div class="row2"><span class="k">保障</span><span class="v">7 天无理由 · 退货运费险 · 假一赔四</span></div></div>
     <div class="blk" data-act="review"><div class="row2" style="padding-top:0"><b style="flex:1">用户评价（2386）</b><span class="ar">好评率 97% ›</span></div>
@@ -403,7 +408,7 @@ const buyBar = p => `<div class="bbar"><div class="ic"><i></i>店铺</div><div c
   <div class="pill cart" data-act="x">加入购物车</div><div class="pill buy" data-act="buy spec">立即购买<small>券后 ¥${prod(p).price - prod(p).coupon}</small></div></div>`;
 function detail(p, o = {}) {
   if (o.half) return `<div class="dimtop">${inert(o.from === 'live' ? live(p, true) : home(p))}</div>
-    <div class="half"><div class="grab" data-act="expand"><i></i><span data-act="back" style="position:absolute;right:10px;top:0;font-size:15px;color:#999;padding:0 4px">✕</span></div><div class="scroll" style="top:22px;bottom:56px" data-scroll>${detailBody(p, o)}</div></div>${buyBar(p)}`;
+    <div class="half${o.stay ? ' stay' : ''}"><div class="grab" data-act="expand"><i></i><span data-act="back" style="position:absolute;right:10px;top:0;font-size:15px;color:#999;padding:0 4px">✕</span></div><div class="scroll" style="top:22px;bottom:56px" data-scroll>${detailBody(p, o)}</div></div>${buyBar(p)}`;
   return `${nav('', '<span class="ic2">⌕</span><span class="ic2">⇪</span>')}<div class="scroll t68 b56${o.leave ? ' leaving' : ''}" data-scroll>${detailBody(p, o)}</div>${buyBar(p)}`;
 }
 function live(p, bare) {
@@ -415,24 +420,36 @@ function live(p, bare) {
       <div><span class="price"><small>¥</small>${P.price - P.coupon}</span> <span class="sold">已售${P.sold}</span></div></div><span class="go" data-act="buy spec">去购买</span></div>`}
     <div class="ft"><div class="say">说点什么…</div><div class="bag" data-act="live">购<em>12</em></div><div class="heart">♥</div></div></div>`;
 }
+const COLS = ['款式一', '款式二', '款式三', '款式四'], SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
+// 埋点不记录选了哪个规格，这里按选择次数轮换，只为让每次改选看得见
+const SEQ = [[1, 1], [0, 1], [2, 1], [1, 2], [0, 2]];
+const selText = v => v ? COLS[v[0]] + '，' + SIZES[v[1]] : '';
 function sku(base, p, o = {}) {
-  const P = prod(p), col = ['款式一', '款式二', '款式三', '款式四'], size = ['S', 'M', 'L', 'XL', 'XXL'];
-  const c = o.col;
-  return `${inert(base)}<div class="mask" data-act="x"></div><div class="sheet"><span class="x" data-act="close">✕</span>
-    <div class="prow"><span class="thumb">${pa(p, c ?? 0)}</span><div><div class="price lg"><small>¥</small>${P.price - P.coupon}<span class="del">¥${P.was}</span></div>
-      <div class="sold">库存充足 · 48 小时内发货</div><div style="margin-top:2px">${c != null ? '已选：' + col[c] + '，' + size[1] : '请选择 颜色分类 尺码'}</div></div></div>
-    <div class="grp">颜色分类</div><div class="opts">${col.map((t, i) => `<span class="opt${i === c ? ' on' : ''}${i === 3 ? ' dis' : ''}" ${i !== c && i !== 3 ? 'data-act="col"' : ''}><span class="thumb">${pa(p, i)}</span>${t}</span>`).join('')}</div>
-    <div class="grp">尺码</div><div class="opts">${size.map((t, i) => `<span class="opt${c != null && i === 1 ? ' on' : ''}">${t}</span>`).join('')}</div>
+  const P = prod(p), v = o.sel, pv = o.prevSel, nx = o.nextSel;
+  const chgC = v && (!pv || pv[0] !== v[0]), chgS = v && pv && pv[1] !== v[1];
+  const cOpt = (t, i) => {
+    const on = v && i === v[0], tgt = nx && i === nx[0] && !(v && v[0] === nx[0]);
+    return `<span class="opt${on ? ' on' : ''}${on && chgC && o.changed ? ' chg' : ''}${i === 3 ? ' dis' : ''}"${tgt ? ' data-act="col"' : ''}><span class="thumb">${pa(p, i)}</span>${t}</span>`;
+  };
+  const sOpt = (t, i) => {
+    const on = v && i === v[1], tgt = nx && i === nx[1] && v && v[0] === nx[0] && v[1] !== nx[1];
+    return `<span class="opt${on ? ' on' : ''}${on && chgS && o.changed ? ' chg' : ''}"${tgt ? ' data-act="col"' : ''}>${t}</span>`;
+  };
+  return `${inert(base)}<div class="mask" data-act="x"></div><div class="sheet${o.stay ? ' stay' : ''}"><span class="x" data-act="close">✕</span>
+    <div class="prow"><span class="thumb">${pa(p, v ? v[0] : 0)}</span><div><div class="price lg"><small>¥</small>${P.price - P.coupon}<span class="del">¥${P.was}</span></div>
+      <div class="sold">库存充足 · 48 小时内发货</div><div style="margin-top:2px">${v ? '已选：' + selText(v) : '请选择 颜色分类 尺码'}${o.changed && pv ? ` <span class="selnote">由 ${selText(pv)} 改选</span>` : ''}</div></div></div>
+    <div class="grp">颜色分类</div><div class="opts">${COLS.map(cOpt).join('')}</div>
+    <div class="grp">尺码</div><div class="opts">${SIZES.map(sOpt).join('')}</div>
     <div class="qty">购买数量 <span>－　1　＋</span></div>
-    <div class="ok2" data-act="ok buy">确定</div></div>`;
+    <div class="ok2${o.done ? ' okdone' : ''}" data-act="ok buy">${o.done ? '✓ 已选好 ' + selText(v) : '确定'}</div></div>`;
 }
 function checkout(p, o = {}) {
   const P = prod(p), pay = P.price - P.coupon;
   return `${nav('确认订单', '<span class="ic2"></span>')}<div class="scroll t68 b56" data-scroll>
     <div class="blk addr"><i>址</i><div style="flex:1"><b>收货人 · 已隐去</b><div class="sold">收货地址已隐去</div></div><span class="ar">›</span></div>
     <div class="blk"><div class="sold">示意旗舰店</div><div class="prow" style="margin-top:6px"><span class="thumb">${pa(p)}</span><div style="flex:1;min-width:0"><div class="two2">${esc(P.name)}</div>
-      <div class="sold">${o.spec ? '款式二，M' : '规格待确认'}</div><div class="prow" style="justify-content:space-between"><span class="price">¥${pay}</span><span>×1</span></div></div></div>
-      <div class="row2" data-act="spec" style="margin-top:6px"><span class="k">规格</span><span class="v">${o.spec ? '款式二，M' : '请选择'}</span><span class="ar">›</span></div>
+      <div class="sold">${o.spec || '规格待确认'}</div><div class="prow" style="justify-content:space-between"><span class="price">¥${pay}</span><span>×1</span></div></div></div>
+      <div class="row2" data-act="spec" style="margin-top:6px"><span class="k">规格</span><span class="v">${o.spec || '请选择'}</span><span class="ar">›</span></div>
       <div class="row2"><span class="k">配送</span><span class="v">快递 · 免运费</span></div>
       <div class="row2"><span class="k">优惠</span><span class="v">店铺券</span><span class="price">-¥${P.coupon}</span></div>
       <div class="row2"><span class="k">保障</span><span class="v">退货运费险 · 商家赠送</span></div>
@@ -486,31 +503,47 @@ function screenFor(c, k) {
   const basePage = (prev.find(x => x.页面 !== '电商SKU面板') || {}).页面;
   const full = prev.some(x => x.动作.includes('上滑到全屏') || x.页面 === '提单页' || x.页面 === '直播间');
   const from = prev[0]?.页面 === '直播间' ? 'live' : 'home';
-  const spec = prev.some(x => x.动作 === '完成规格选择') || a === '完成规格选择';
+  const spec = selText(selAt(c, k, p).sel);
+  const stay = prev[0] && prev[0].页面 === s.页面 && prev[0].商品 === s.商品;
   switch (s.页面) {
     case '订单列表': return orders(p);
     case '直播间': return live(p);
     case '商品详情Native':
       if (a.startsWith('进入商品详情')) return detail(p, { half: true, from });
       if (a.includes('上滑到全屏')) return detail(p, {});
-      if (a.includes('点击该商品')) return detail(p, { half: !full, from, spec });
-      if (a.includes('主图')) return detail(p, { img: 2, half: !full, from });
+      if (a.includes('点击该商品')) return detail(p, { half: !full, from, spec, stay });
+      if (a.includes('主图')) return detail(p, { img: 2, half: !full, from, stay });
       if (a.includes('评价页')) return reviews(p);
       if (a.includes('离开')) return detail(p, { leave: true, half: false });
       return detail(p, {});
     case '电商SKU面板': {
       const base = basePage === '直播间' ? live(p) : basePage === '提单页' ? checkout(p, { spec }) : detail(p, { spec });
-      const opened = prev.filter(x => x.页面 === '电商SKU面板' && x.商品 === s.商品 && x.动作 !== '打开规格面板').length;
-      const col = a.includes('切换') ? 2 : a.includes('选择规格项') || a.includes('完成') || opened ? 1 : null;
-      return sku(base, p, { col });
+      const st = selAt(c, k, p), nxt = c.steps[k + 1];
+      const nextSel = nxt && nxt.页面 === '电商SKU面板' && nxt.商品 === s.商品 ? selAt(c, k + 1, p).sel : null;
+      return sku(base, p, { sel: st.sel, prevSel: st.prev, changed: st.changed, nextSel, stay, done: a === '完成规格选择' });
     }
     case '提单页':
-      if (a.includes('提交订单成功')) return checkout(p, { spec: true, done: true });
+      if (a.includes('提交订单成功')) return checkout(p, { spec: spec || '款式二，M', done: true });
       return checkout(p, { spec });
     case '支付成功页': return paid(p);
     case '订单详情': return orderDetail(s.商品 || p);
     default: return detail(p, {});
   }
+}
+
+// 第 k 步时这个商品选中的规格。选择、切换算一次改选；没先选就直接「完成」，说明面板里改过，也算一次
+function selAt(c, k, p) {
+  let n = 0, last = null, before = 0;
+  for (let i = 0; i <= k; i++) {
+    const x = c.steps[i];
+    if (x.页面 !== '电商SKU面板' || (x.商品 || p) !== p) continue;
+    const pick = x.动作.includes('选择规格项') || x.动作.includes('切换') || (x.动作 === '完成规格选择' && !(last && (last.includes('选择规格项') || last.includes('切换'))));
+    if (i === k) before = n;
+    if (pick) n++;
+    last = x.动作;
+  }
+  const sel = n ? SEQ[(n - 1) % SEQ.length] : null, prev = before ? SEQ[(before - 1) % SEQ.length] : null;
+  return { sel, prev, changed: n > before };
 }
 
 // 下一步真实动作对应界面上的哪个元素（data-act）
@@ -616,7 +649,7 @@ function renderList() {
 }
 
 function load(i) {
-  stopAuto(); cur = i; shown = 0; sel = -1;
+  stopAuto(); cur = i; shown = 0; sel = -1; screenKey = '';
   renderList(); render();
   try { history.replaceState(null, '', '#' + C[i].no); } catch (e) {}
 }
@@ -644,7 +677,8 @@ function render(thinking) {
   $('prog').textContent = `${shown}/${n} 步`;
   $('bStep').disabled = busy || done();
   $('bReset').disabled = busy || !shown;
-  $('screen').innerHTML = shown ? screenFor(c, k) : home(c.steps.find(x => x.商品)?.商品 || '商品A');
+  const key = cur + ':' + k;
+  if (key !== screenKey) { $('screen').innerHTML = shown ? screenFor(c, k) : home(c.steps.find(x => x.商品)?.商品 || '商品A'); screenKey = key; }
   if (shown) {
     const s = c.steps[k], meta = [s.重复 > 1 ? `重复 ${s.重复} 次` : '', s.停留 ? `停留 ${s.停留} 秒` : ''].filter(Boolean).join(' · ');
     $('cap').innerHTML = `<div class="act"><b>#${k + 1}</b>${esc(s.动作)}</div><div class="sub">${esc(s.页面)}${meta ? ' · ' + meta : ''}${k !== shown - 1 ? ' · 正在查看历史步骤' : ''}</div>`;
