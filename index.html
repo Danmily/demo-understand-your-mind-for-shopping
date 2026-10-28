@@ -697,7 +697,8 @@ function l4(c) {
   const R = c.judgments[c.judgments.length - 1].retain || {}, P = prod(pOf(c, c.steps.length - 1));
   if (c.buy_day || !LEAVE.includes(c.next_action)) return '';
   if (R.decision === '挽回') {
-    const perk = R.tiers.find(x => x.tier === 'L2' || x.tier === 'L3');
+    const perk = R.tiers.find(x => x.tier === 'L2' || x.tier === 'L3'), l4n = R.tiers.find(x => x.tier === 'L4')?.name;
+    if (l4n === '站内投放') return `<div class="l4"><b>会后承接（L4 · 站内投放）</b><br>会话结束仍没下单：下次打开推荐流时，把${esc(pOf(c, c.steps.length - 1))}和同类商品放进推荐位，不发券 · 示意</div>`;
     return `<div class="l4"><b>会后触达（L4 · 触达）</b><br>会话结束仍没下单：次日推送一次「你看过的${esc(pOf(c, c.steps.length - 1))}${perk ? '，' + esc(tierText(perk, c, c.steps.length - 1)) : '，还在等你'}」，每天最多 1 次 · 示意</div>`;
   }
   if (R.decision === '轻承接') return `<div class="l4"><b>后续推荐（L4 · 站内投放）</b><br>只是浏览，不在当下打扰、不发券；下次打开推荐流时再曝光同类商品 · 示意</div>`;
